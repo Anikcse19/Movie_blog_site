@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Signika&display=swap") * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f0f0;
+  font-family: "Inter", sans-serif;
+}
+
+#poster-box:hover {
+  opacity: 0.8;
+  transition-property: all;
+  transition-duration: 3ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+#poster-box:hover #poster-title {
+  opacity: 1;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.scrollableDiv::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollableDiv::-webkit-scrollbar-thumb {
+  background: #e08484;
+  border-radius: 10px;
+}
+
+.scrollableDiv::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
