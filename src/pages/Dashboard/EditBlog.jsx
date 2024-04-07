@@ -44,7 +44,7 @@ const BlogEditPage = () => {
     // get all existing details
     axios.get(`${base_url}/articles/${id}`).then((res) => {
       if (res?.data) {
-        console.log(res?.data?.article);
+        
         setBlogTitle(res?.data?.article?.title);
         setExiststingContent(res?.data?.article?.body);       
         setContent(res?.data?.article?.body);

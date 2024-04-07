@@ -60,8 +60,9 @@ const GenresPage = () => {
 
   return (
     <DashboardLayout>
-      {/* page title */}
-      <div className="mb-6">
+    <div className="w-[95%] mx-auto lg:w-full">
+  {/* page title */}
+  <div className="mb-6">
         <h1 className="text-2xl border-4 px-2 py-1 border-orange-700 ">
           Genres
         </h1>
@@ -181,6 +182,7 @@ const GenresPage = () => {
           </div>
         )}
       </div>
+    </div>
     </DashboardLayout>
   );
 };

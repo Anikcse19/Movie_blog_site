@@ -91,14 +91,14 @@ const SingleGenreContentPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-10 px-3 lg:px-0 my-3">
         {/* articles */}
-        <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3 mx-3">
+        <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3 ">
           {content?.articles?.map((article) => (
             <div
             key={article.id}
             style={{
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
-            className="flex flex-col justify-between gap-2 w-[100%]  py-3 px-3 cursor-pointer rounded-md border-4 border-white"
+            className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md border-4 border-white"
           >
             <div
              onMouseEnter={() =>
@@ -108,7 +108,7 @@ const SingleGenreContentPage = () => {
               onClick={() => {
                 router(`/articles/article-details/${article.id}`);
               }}
-              className=" w-[100%] h-[250px]"
+              className="w-[100%] h-[125px] md:h-[250px] flex items-center justify-center"
             >
               <img className="w-[100%] h-full" src={article?.thumbnail} alt="" />
             </div>

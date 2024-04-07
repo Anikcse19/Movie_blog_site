@@ -44,7 +44,7 @@ const Top50ArticlesPage = () => {
       // get latest web series articles
       axios.get(`${base_url}/articles/top-10-articles`).then(res=>{
        if(res?.data){
-        console.log(res?.data);
+        
          setLatestWebSeriesArticles(res.data.top10articles)
        }
      })

@@ -200,7 +200,7 @@ const AllBlogsPage = () => {
                         </td>
                         <td className="px-3 py-3 text-center flex gap-2 items-center justify-center h-full">
                           <span onClick={()=>{
-                            console.log('hello');
+                          
                             setIsDeleteModalOpen({
                               value:article?.id,status:true,from:"all"
                             })

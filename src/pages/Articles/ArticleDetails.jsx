@@ -100,7 +100,7 @@ const ArticleDetailsPage = () => {
              {article?.title}
             </h1>
             {/* blog write and date */}
-            <div className="w-[50%] flex justify-between items-center">
+            <div className="w-[100%] lg:w-[50%] flex justify-between items-center">
               <span className="text-gray-700 text-[15px] flex items-center gap-3">
                 {" "}
                 <VscAccount /> <p>{article?.user?.name}</p>
