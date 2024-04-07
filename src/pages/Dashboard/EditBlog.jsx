@@ -139,8 +139,9 @@ const BlogEditPage = () => {
 
   return (
     <DashboardLayout>
-      {/* page title */}
-      <div className="mb-6">
+     <div className="w-[95%] mx-auto lg:w-full">
+ {/* page title */}
+ <div className="mb-6">
         <h1 className="text-2xl border-4 px-2 py-1 border-orange-700 ">
           Edit Blog
         </h1>
@@ -462,6 +463,7 @@ const BlogEditPage = () => {
           </div>
         </form>
       </div>
+     </div>
     </DashboardLayout>
   );
 };
