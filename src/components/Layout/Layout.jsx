@@ -20,15 +20,16 @@ const Layout = ({ children }) => {
     <div>
      
         <Header/> 
-        <div className="block lg:hidden px-3 my-5 cursor-pointer mx-auto">
+        <div className="w-[90%] lg:w-full  block lg:hidden my-5 cursor-pointer mx-auto">
           <span onClick={()=>{
             setMobileNavOpen(!mobileNavOpen)
-          }} className="bg-black flex items-center  gap-3 px-3 py-2 text-white font-bold">
+          }} className=" bg-black flex items-center  gap-3 px-3 py-2 text-white font-bold">
             <CgMenuGridR className="text-lg"/>
-            <span>See Menu</span></span>
+            <span>See Menu</span>
+            </span>
 
             {/* dropdown */}
-            <div className={`${mobileNavOpen ?"bg-black opacity-90 text-white rounded shadow-lg px-12 py-12 mt-3":"opacity-0 px-0 py-0"} transition-all duration-300 ease-in-out absolute z-50 w-[94%] `}>
+            <div className={`${mobileNavOpen ?"bg-black opacity-90 text-white rounded shadow-lg px-10 py-12 mt-3":"opacity-0 px-0 py-0"} transition-all duration-300 ease-in-out absolute z-50 w-[90%] `}>
               <div className=" text-center font-bold">
                 {/* nav */}
                 <div onClick={()=>router("/")} className="my-5 border-b-2 border-white ">
