@@ -41,10 +41,15 @@ const ArticleCard = ({ article }) => {
 
       {/* title */}
       <span
-        className={`px-1 ${
+        className={`px-1 hidden lg:block ${
           isHover.value === article.id && "text-red-600"
         } font-bold text-[12px] md:text-[16px]`}
       >{`${article?.title.slice(0, 20)}....`}</span>
+      <span
+        className={`px-1 block lg:hidden ${
+          isHover.value === article.id && "text-red-600"
+        } font-bold text-[12px] md:text-[16px]`}
+      >{`${article?.title.slice(0, 15)}....`}</span>
 
       {/* date and genre */}
       <div className="flex flex-col md:flex-row md:items-center gap-y-2 justify-between ">
