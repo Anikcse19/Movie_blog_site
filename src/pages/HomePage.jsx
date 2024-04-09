@@ -1,3 +1,4 @@
+import images from "../../config";
 import Layout from "../components/Layout/Layout";
 import Articles from "../components/UI/Articles/Articles";
 import HomeBanner from "../components/UI/Home/HomeBanner";
@@ -18,41 +19,41 @@ export default function Home() {
 
       {/* advertise */}
       
-        <div className="my-2 px-3 md:p-0">
-          <img src="/image/homePageAds.png" alt="" />
+        <div className="w-[90%] lg:w-full mx-auto my-5  md:p-0">
+          <img className="w-full" src={images.addImage} alt="" />
         </div>
      
       <MoviesSubNav />
       <MoviesIntroSection />
 
-      {/* advertise */}
+     {/* advertise */}
       
-      <div className="my-2 px-3 md:p-0">
-          <img src="/image/homePageAds.png" alt="" />
+     <div className="w-[90%] lg:w-full mx-auto my-5  md:p-0">
+          <img className="w-full" src={images.addImage} alt="" />
         </div>
       
       <WebSeriesSubNav />
       <WebSeriesIntroSection />
 
-     {/* advertise */}
-      
-     <div className="my-2 px-3 md:p-0">
-          <img src="/image/homePageAds.png" alt="" />
-        </div>
-     
-      <Upcoming />
-
       {/* advertise */}
-     
-        <div className="my-2 px-3 md:p-0">
-          <img src="/image/homePageAds.png" alt="" />
+      
+      <div className="w-[90%] lg:w-full mx-auto my-5  md:p-0">
+          <img className="w-full" src={images.addImage} alt="" />
         </div>
      
-      <Articles/>
-       {/* advertise */}
+      <Upcoming /> 
+
+        {/* advertise */}
       
-        <div className="my-2 px-3 md:p-0">
-          <img src="/image/homePageAds.png" alt="" />
+        <div className="w-[90%] lg:w-full mx-auto my-5  md:p-0">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
+     
+      <Articles/> 
+        {/* advertise */}
+      
+        <div className="w-[90%] lg:w-full mx-auto my-5  md:p-0">
+          <img className="w-full" src={images.addImage} alt="" />
         </div>
       
      </Layout>

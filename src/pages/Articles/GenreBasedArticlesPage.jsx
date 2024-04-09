@@ -71,25 +71,28 @@ const SingleGenreContentPage = () => {
   return (
     <Layout>
       {/* advertise */}
-
-      <div className="my-2 mx-3 md:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full object-cover" src={images.addImage} alt="" />
+        </div>
 
       {/* route */}
-      <div className="px-3 md:px-0">
+      <div className=" w-[90%] lg:w-full mx-auto ">
         <span className="text-gray-700 text-[15px]">Home {">"} Genres{">"} {content?.title}</span>
       </div>
 
       {/* Movies tag */}
-      <div className="bg-red-600 px-3 py-2 text-white inline-block mt-2 mx-3 md:mx-0">
+      <div className="  w-[90%] lg:w-full mx-auto">
+
+      <div className="bg-red-600 py-2 text-white inline-block mt-2 px-3">
         <span>{content?.title}</span>
+      </div>
       </div>
 
       
       {/* articles and adds */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-10 px-3 lg:px-0 my-3">
+      <div className="w-[90%] lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 items-center gap-5  my-3">
         {/* articles */}
         <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3 ">
           {content?.articles?.map((article) => (
@@ -98,7 +101,7 @@ const SingleGenreContentPage = () => {
             style={{
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
-            className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md border-4 border-white"
+            className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md "
           >
             <div
              onMouseEnter={() =>
@@ -110,13 +113,15 @@ const SingleGenreContentPage = () => {
               }}
               className="w-[100%] h-[125px] md:h-[250px] flex items-center justify-center"
             >
-              <img className="w-[100%] h-full" src={article?.thumbnail} alt="" />
+              <img className="w-[100%] h-full object-cover" src={article?.thumbnail} alt="" />
             </div>
       
             <span className={`px-1 ${
                 isHover.value === article.id && "text-red-600"
               } font-semibold`}>{`${article?.title.slice(0, 35)}....`}</span>
-            <div className="flex items-center justify-between ">
+
+
+            <div className="flex flex-col lg:flex-row lg:items-center gap-2 justify-between ">
             <span className="px-1 pb-1 text-gray-600 text-[12px]">
               {manageDateFormate(article?.created_at)}
             </span>
@@ -125,7 +130,7 @@ const SingleGenreContentPage = () => {
                 onClick={()=>{
                   router(`${article?.category_id==1?"/articles/movies":article?.category_id==2 ? "articles/tv-shows":"/articles/web-series"}`)
                 }} 
-                className="text-[12px] border border-orange-900 bg-orange-600 hover:bg-orange-900 p-1 rounded-md text-white animate-pulse" >{
+                className="text-[10px] md:text-[12px] font-bold mx-1 bg-slate-800 hover:bg-slate-700 px-1 py-1 rounded-sm text-white animate-pulse" >{
                     article?.category_id==1?"Movie":article?.category_id==2?"TV Shows":article?.category_id==3 && "Web Series"
                 }</span>      
             </div>
@@ -137,7 +142,7 @@ const SingleGenreContentPage = () => {
         {/* adds and etc */}
         <div className="w-full flex flex-col ">
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 1</div>
+          <div className="bg-gray-400 h-[250px]">adds 1</div>
 
           {/* popular posts */}
           <div className="my-2">
@@ -157,7 +162,7 @@ const SingleGenreContentPage = () => {
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
 
           {/* genres */}
           <div className="my-3">
@@ -191,7 +196,7 @@ const SingleGenreContentPage = () => {
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
 
           {/* newsletter */}
           <div
@@ -229,7 +234,7 @@ const SingleGenreContentPage = () => {
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
         </div>
       </div>
       {/* advertise */}

@@ -74,7 +74,7 @@ const LoginPage = () => {
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Write your mail"
-                className="px-3 py-2 rounded bg-[#DAAEE9]  outline-none mb-0"
+                className="px-3 py-2 rounded bg-[#DAAEE9]   outline-none mb-0"
                 type="email"
               />
             </div>
@@ -110,7 +110,7 @@ const LoginPage = () => {
             boxShadow:
               "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
           }}
-          className="bg-[#4778b1] px-24 py-2 rounded-md  font-extrabold text-[20px] opacity-90 cursor-pointer"
+          className="bg-[#4778b1] hover:bg-[#6693c7] px-24 py-2 rounded-md  font-extrabold text-[20px] opacity-90 cursor-pointer"
         >
           <span>Login</span>
         </div>

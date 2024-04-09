@@ -75,17 +75,18 @@ const ArticleDetailsPage = () => {
   return (
     <Layout>
       {/* advertise */}
-      <div className="my-2 mx-3 lg:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
 
       {/* main body */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 my-5">
-        <div className="cols-span-1 lg:col-span-2 px-3 lg:px-0">
+      <div className="w-[90%] lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 my-5">
+        <div className="cols-span-1 lg:col-span-2  lg:px-0">
           {/* pathname */}
           <div className="my-2">
-            <span className="text-gray-700 text-[15px]">
-              Home {">"} {article?.category_id==1?"Movies":"Web Series"} {">"}{article?.title}
+            <span className="text-gray-700 text-[10px] md:text-[15px]">
+              Home {">"} {article?.category_id==1?"Movies":"Web Series"} {">"} {article?.title}
             </span>
           </div>
 
@@ -96,7 +97,7 @@ const ArticleDetailsPage = () => {
 
           {/* Content Title */}
           <div className="my-2">
-            <h1 className="text-3xl font-bold ">
+            <h1 className="text-base xl:text-3xl font-bold ">
              {article?.title}
             </h1>
             {/* blog write and date */}
@@ -173,10 +174,10 @@ const ArticleDetailsPage = () => {
         </div>
 
         {/* right side */}
-        <div className="px-3 lg:px-0">
+        <div className="">
           <div className="flex flex-col">
             {/* adds */}
-            <div className="bg-red-800 h-[250px]">adds 1</div>
+            <div className="bg-gray-400 h-[250px]">adds 1</div>
 
             {/* popular posts */}
             <div className="my-2">
@@ -196,7 +197,7 @@ const ArticleDetailsPage = () => {
             </div>
 
             {/* adds */}
-            <div className="bg-red-800 h-[250px]">adds 2</div>
+            <div className="bg-gray-400 h-[250px]">adds 2</div>
 
             {/* genres */}
             <div className="my-3">
@@ -230,7 +231,7 @@ const ArticleDetailsPage = () => {
             </div>
 
             {/* adds */}
-            <div className="bg-red-800 h-[250px]">adds 2</div>
+            <div className="bg-gray-400 h-[250px]">adds 2</div>
 
             {/* newsletter */}
             <div
@@ -268,7 +269,7 @@ const ArticleDetailsPage = () => {
             </div>
 
             {/* adds */}
-            <div className="bg-red-800 h-[250px]">adds 2</div>
+            <div className="bg-gray-400 h-[250px]">adds 2</div>
           </div>
         </div>
       </div>

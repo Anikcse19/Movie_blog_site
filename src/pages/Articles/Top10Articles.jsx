@@ -66,15 +66,16 @@ const Top50ArticlesPage = () => {
   return (
     <Layout>
       {/* advertise */}
-      <div className="my-2 mx-3 md:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
 
       {/* articles and adds */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-10 px-3 lg:px-0">
+      <div className="w-[90%] xl:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 items-center gap-5">
         {/* articles */}
-        <div className="lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 self-start gap-3 mx-3">
+        <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3">
           {latestWebSeriesArticles.map((webSeriesArticle) => (
             <ArticleCard key={webSeriesArticle.id} article={webSeriesArticle} />
           ))}
@@ -83,7 +84,7 @@ const Top50ArticlesPage = () => {
         {/* adds and etc */}
         <div className="w-full flex flex-col ">
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 1</div>
+          <div className="bg-gray-400 h-[250px]">adds 1</div>
 
           {/* popular posts */}
           <div className="my-2">
@@ -103,7 +104,7 @@ const Top50ArticlesPage = () => {
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
 
           {/* genres */}
           <div className="my-3">
@@ -137,7 +138,7 @@ const Top50ArticlesPage = () => {
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
 
           {/* newsletter */}
           <div
@@ -175,13 +176,14 @@ const Top50ArticlesPage = () => {
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
         </div>
       </div>
       {/* advertise */}
-      <div className="my-2 mx-3 lg:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
     </Layout>
   )
 }

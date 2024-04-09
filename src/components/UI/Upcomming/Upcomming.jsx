@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -20,6 +20,8 @@ const Upcoming = () => {
   const [firstSlide, setFirstSlide] = useState(0);
   const [secondSlide, setSecondSlide] = useState(1);
   const [thirdSlide, setThirdSlide] = useState(2);
+  const containerRef=useRef()
+  let numbersOfCard;
 
   useEffect(()=>{
     axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=f398789190003083c23f81d2a33cc72c').then(res=>{
@@ -41,16 +43,38 @@ const Upcoming = () => {
 
     return `${day},${currentDate}th ${month},${year}`;
   };
+
+  const resize=()=>{
+    const container=containerRef.current
+    const width=container.offsetWidth
+    if(width<400){
+      numbersOfCard=2
+    }else{
+      numbersOfCard=3
+    }
+  }
+
+  useEffect(() => {
+    resize()
+
+    window.addEventListener('resize',resize)
+    return () => {
+      window.removeEventListener('resize',resize)
+    };
+  }, []);
   return (
     // <Center>
     <>
-      <div className="flex my-10 border-b-2 border-[#F19100] mx-3 md:mx-0 ">
+      <div className="w-[90%] xl:w-full mx-auto flex my-10 border-b-2 border-[#F19100]  ">
         <div className="bg-[#F19100] px-3 py-2 text-white font-bold">
           Upcoming
         </div>
       </div>
       {/* content */}
-      <Swiper
+
+      {/* for large screen */}
+     <div className="hidden md:block">
+     <Swiper
         slidesPerView={3}
         spaceBetween={0}
         freeMode={true}
@@ -58,12 +82,14 @@ const Upcoming = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="mySwiper mx-3"
+        className="mySwiper w-[90%] xl:w-full mx-auto " ref={containerRef}
       >
         {upcomingContents.map((content) => (
-          <SwiperSlide key={content.id}>
+          <SwiperSlide style={{
+            boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+          }} key={content.id} className="mb-10 mx-2 bg-gray-200">
             <div            
-            className="ml-5 flex flex-col justify-center gap-2 w-[90%] cursor-pointer rounded-md mb-10 p-1 bg-white "
+            className="flex flex-col justify-center gap-2 cursor-pointer rounded-md  "
           >
             <div className="w-[100%] mx-auto ">
               <img 
@@ -81,13 +107,68 @@ const Upcoming = () => {
             >
               {`${content.title.slice(0,20)}...`}
             </span>
-            <span className="px-1 pb-1">
+            <span className="px-1 pb-1 text-gray-700 text-[12px]">
               {manageDateFormate(content.release_date)}
             </span>
           </div>
           </SwiperSlide>
         ))}
+      
       </Swiper>
+     </div>
+
+      {/* for small screen */}
+      <div className="block md:hidden">
+     <Swiper
+        slidesPerView={2}
+        spaceBetween={0}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper w-[90%] xl:w-full mx-auto " ref={containerRef}
+      >
+        {upcomingContents.map((content) => (
+          <SwiperSlide style={{
+            boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+          }} key={content.id} className="mb-10 mx-2 bg-gray-200">
+            <div            
+            className="flex flex-col justify-center gap-2 cursor-pointer rounded-md  "
+          >
+            <div className="w-[100%] mx-auto ">
+              <img 
+                className="w-[100%] h-[200px]"
+                src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
+                alt=""
+              />
+            </div>
+
+            <span
+              className={`px-1 hidden sm:block ${
+                isHover.value === content.id &&
+                "text-red-600"
+              }`}
+            >
+              {`${content.title.slice(0,20)}...`}
+            </span>
+            <span
+              className={`px-1 block sm:hidden ${
+                isHover.value === content.id &&
+                "text-red-600"
+              }`}
+            >
+              {`${content.title.slice(0,10)}...`}
+            </span>
+            <span className="px-1 pb-1 text-gray-700 text-[12px]">
+              {manageDateFormate(content.release_date)}
+            </span>
+          </div>
+          </SwiperSlide>
+        ))}
+      
+      </Swiper>
+     </div>
     </>
 
     // </Center>

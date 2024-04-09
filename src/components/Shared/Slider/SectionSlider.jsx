@@ -14,27 +14,29 @@ export default function SectionSlider({ slides }) {
           delay: 2000,
         }}
         modules={[Autoplay]}
-        className="mySwiper"
+        className="mySwiper h-full"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="flex flex-col py-10 md:p-0 items-center w-[100%] gap-2  ">
+            <div className="h-full flex flex-col items-center w-full gap-2  ">
+
+
               {/* image */}
               <div onClick={()=>{
                 router(`/articles/article-details/${slide.id}`)
-              }} className="w-[100%] h-[200px] md:h-[450px] self-baseline cursor-pointer">
+              }} className="w-[100%] h-[70%] xl:h-full self-baseline cursor-pointer">
                 <img className="w-[100%] h-full object-cover " src={slide?.thumbnail} alt="" />
               </div>
 
               {/* title and summery */}
-              <div className="flex flex-col self-start w-[100%]">
-                <span className="p-1">
-                  <h1 className="text-black font-bold text-base md:text-[28px]">
+              <div className="flex flex-col self-start w-[100%] mb-2">
+                <span className="p-2">
+                  <h1 className="text-black font-bold text-base xl:text-[20px]">
                     {slide?.title}
                   </h1>
                 </span>
-                <span className="text-black text-[16px] p-1">
-                  {slide?.summery ? `${slide?.summery.slice(0,100)}...`: slide?.tags}
+                <span className="text-gray-800 text-[12px] p-2">
+                  {slide?.summery ? `${slide?.summery.slice(0,200)}...`: slide?.tags}
                 </span>
               </div>
             </div>

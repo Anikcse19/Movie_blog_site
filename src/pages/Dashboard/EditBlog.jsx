@@ -98,6 +98,7 @@ const BlogEditPage = () => {
     const blogData = {
       title: blogTitle,
       thumbnail: file?file:thumbnail?thumbnail:"",
+      summery:blogSummery,
       body: content,
       category_id: selectedCategories,
       genres: JSON.stringify(selectedIds),
@@ -109,6 +110,7 @@ const BlogEditPage = () => {
     const formData = new FormData();
     formData.append("title", blogData.title);
     formData.append("thumbnail", blogData?.thumbnail );
+    formData.append("summery", blogData.summery);
     formData.append("body", blogData.body);
     formData.append("genres", blogData.genres);
     formData.append("category_id", blogData.category_id);

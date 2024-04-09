@@ -54,7 +54,6 @@ const AllBlogsPage = () => {
   allDates?.map(date=>{
     const newDate=new Date(date) 
     allYears.push(newDate.getFullYear()) 
-
   })
 
   let uniqueDates = [...new Set(allYears)];

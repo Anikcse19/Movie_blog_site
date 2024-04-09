@@ -19,8 +19,10 @@ const MoviesSubNav = () => {
 
   return (
     // <Center>
-    <div className="flex items-center justify-between my-2 border-b-2 border-[#252e74] mx-3 lg:mx-0">
-      <div className="bg-[#252e74] px-3 py-2 text-white font-bold">Movies</div>
+    <div className="w-[90%] lg:w-full mx-auto flex items-center justify-between my-2 border-b-2 border-[#da3838]  mt-10 lg:mx-0">
+      <div className="bg-[#da3838] px-3 py-2 text-white font-bold">Movies</div>
+
+
       {/* for mobile version  */}
       <div className="block lg:hidden relative">
         <div
@@ -28,23 +30,23 @@ const MoviesSubNav = () => {
           className="flex gap-2 items-center"
         >
           {openMoviesSubNav ? (
-            <IoIosArrowBack className="text-purple-500 font-semibold text-lg" />
+            <IoIosArrowBack className="text-red-500 font-semibold text-lg" />
           ) : (
-            <IoIosArrowDown className="text-purple-500 font-semibold text-lg" />
+            <IoIosArrowDown className="text-red-500 font-semibold text-lg" />
           )}
-          <span className="font-semibold text-purple-500 cursor-pointer">See Options</span>
+          <span className="font-semibold text-red-500 cursor-pointer">See Options</span>
         </div>
         {/* dropdown */}
         <div
           className={`${
             openMoviesSubNav
-              ? "bg-black opacity-80 py-5 px-16 rounded-md "
+              ? "bg-red-400  py-5 px-8 rounded-md "
               : "px-0 py-0 opacity-0"
-          } transition-all duration-500 ease-in-out absolute top-8 right-0 z-50`}
+          } transition-all duration-500 ease-in-out absolute top-8 right-0 z-50 `}
         >
           {/* all navs */}
           <div className="flex flex-col justify-start items-start gap-4 ">
-            {genres.slice(0,6).map((genre, i) => (
+            {genres.slice(0,7).map((genre, i) => (
               <div className="border-b-2 border-white " key={i}>
                 <span
                   onClick={() =>
@@ -54,7 +56,7 @@ const MoviesSubNav = () => {
                     })
                   }
                   className={`font-[500] cursor-pointer ${
-                    selectedGenreForMovie.value === genre.id ? "text-red-500" : "text-white"
+                    selectedGenreForMovie.value === genre.id ? "text-black font-bold" : "text-white"
                   } ` }
                 >
                   {genre?.title}
@@ -67,7 +69,7 @@ const MoviesSubNav = () => {
 
       {/* big screen nav */}
       <div className="hidden flex-grow px-12 py-2 lg:flex justify-between lg:justify-evenly  items-center gap-2">
-        {genres.slice(0,6).map((genre, index) => (
+        {genres.slice(0,7).map((genre, index) => (
           <span
             onClick={() =>
               setSelectedGenreForMovie({
@@ -76,7 +78,7 @@ const MoviesSubNav = () => {
               })
             }
             className={`font-[500] cursor-pointer ${
-              selectedGenreForMovie.value === genre.id ? "text-red-800 font-bold" : ""
+              selectedGenreForMovie.value === genre.id ? "text-red-500 font-bold" : ""
             }`}
             key={index}
             href=""

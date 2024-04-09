@@ -29,15 +29,15 @@ const Navbar = () => {
 
   return (
     <Center>
-      <div className="hidden md:flex justify-evenly bg-white my-2 p-1 ">
+      <div className="hidden lg:flex justify-evenly bg-white my-2 p-1 ">
         <div
           onClick={() => navigate("/")}
-          className={`flex items-center justify-center gap-4 cursor-pointer ${
+          className={`flex items-center justify-center gap-2 cursor-pointer ${
             pathname === "/" ? "text-red-500" : "hover:text-red-300"
-          }  px-5 py-2 rounded-lg`}
+          }  px-5 py-2 rounded-lg `}
         >
-          <FaHome />
-          <span className="text-[18px] font-semibold">Home</span>
+          <FaHome className="w-4 h-4"/>
+          <span className="text-[14px] xl:text-[16px] font-semibold">Home</span>
         </div>
         <div
           onClick={() => {
@@ -56,8 +56,8 @@ const Navbar = () => {
             pathname.includes("/movies") ? "text-red-500" : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative`}
         >
-          <ImFilm />
-          <span className="text-[18px] font-semibold">Movies</span>
+          <ImFilm className="w-4 h-4"/>
+          <span className="text-[14px] xl:text-[18px] font-semibold">Movies</span>
 
 
           {/* Movies Button Dropbutton */}
@@ -98,8 +98,8 @@ const Navbar = () => {
               : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative `}
         >
-          <MdOndemandVideo />
-          <span className="text-[18px] font-semibold">Web Series</span>
+          <MdOndemandVideo className="w-4 h-4"/>
+          <span className="text-[14px] xl:text-[18px] font-semibold">Web Series</span>
 
           {/* web series Button Dropbutton */}  
           {/* <div
@@ -131,8 +131,8 @@ const Navbar = () => {
               : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative`}
         >
-          <FaCalendarAlt />
-          <span className="text-[18px] font-semibold">Upcoming</span>
+          <FaCalendarAlt className="w-4 h-4"/>
+          <span className="text-[14px] xl:text-[18px] font-semibold">Upcoming</span>
 
             
         </div>
@@ -145,8 +145,8 @@ const Navbar = () => {
               ? "text-red-500"
               : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative`}>
-          <GiPin />
-          <span className="text-[18px] font-semibold">Top 50 Articles</span>
+          <GiPin className="w-4 h-4"/>
+          <span className="text-[14px] xl:text-[18px] font-semibold">Top 50 Articles</span>
         </div>
       </div>
     </Center>

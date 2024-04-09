@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
     <div>
      
         <Header/> 
-        <div className="block md:hidden px-3 my-5 cursor-pointer mx-auto">
+        <div className="block lg:hidden px-3 my-5 cursor-pointer mx-auto">
           <span onClick={()=>{
             setMobileNavOpen(!mobileNavOpen)
           }} className="bg-black flex items-center  gap-3 px-3 py-2 text-white font-bold">

@@ -1,14 +1,11 @@
-
 import axios from "axios";
 
 import { useContext, useEffect, useState } from "react";
+import { FaAnglesRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { BlogContext } from "../../../ContextApi/BlogContext";
 import base_url from "../../../Utils/Url";
 import SectionSlider from "../../Shared/Slider/SectionSlider";
-
-
-
 
 const MoviesIntroSection = () => {
   const [isHover, setIshover] = useState({
@@ -33,34 +30,53 @@ const MoviesIntroSection = () => {
 
     // get suggestions articles
     axios
-      .get(
-        `${base_url}/articles/suggestions?category_id=1`
-      )
+      .get(`${base_url}/articles/suggestions?category_id=1`)
       .then((res) => setSuggetionMovies(res.data.articles));
   }, [selectedGenreForMovie.value]);
 
   const reverseSuggestionMovies = suggestionMovies.slice().reverse();
 
+  const manageDateFormate = (date) => {
+    const newDate = new Date(date);
+    const dateString = newDate.toDateString();
+    const dateArray = dateString.split(" ");
+    const day = dateArray[0];
+    const currentDate = dateArray[2];
+    const month = dateArray[1];
+    const year = dateArray[3];
+
+    return `${day},${currentDate}th ${month},${year}`;
+  };
+
   return (
     // <Center>
-    <div className="my-2 flex flex-col lg:flex-row items-center justify-between gap-3 px-3 lg:p-0 relative">
+    <div>
+      <div className="w-[90%] lg:w-full mx-auto my-2 flex flex-col xl:flex-row items-center justify-between gap-3 ">
       {/* slider */}
-      <div className="w-[100%] lg:w-[60%] bg-white  rounded">
+      <div
+      style={{
+        boxShadow:" rgba(0, 0, 0, 0.35) 0px 5px 15px"
+      }}
+      className="w-full xl:w-[60%] h-[530px] bg-gray-100  rounded">
         {/* <SectionCarousel slides={slides}/> */}
-        {!movies.length > 0 && (
-          <div className="h-[550px] w-full bg-gray-400 animate-pulse" />
-        )}
+        {!movies.length > 0 ? (
+          <div className="w-full h-full bg-gray-500 animate-pulse flex items-center justify-center" >
+            <p>No content available!!</p>
+          </div>
+        ):(
+
         <SectionSlider slides={movies} />
+        )}
       </div>
 
       {/* suggestion */}
-      <div className="scrollableDiv  w-[100%] h-[600px] overflow-y-auto lg:w-[40%] lg:p-0 flex flex-col gap-2 z-0">
+      <div className="w-[100%] xl:w-[40%] grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-2 z-0">
         {!suggestionMovies.length > 0 && (
           <div className="w-full h-[550px] animate-pulse ">
             <div className="w-full bg-gray-400 h-full"></div>
           </div>
         )}
-        {reverseSuggestionMovies.map((suggestionMovie) => (
+        {reverseSuggestionMovies.slice(0,5).map((suggestionMovie) => (
           <div
             key={suggestionMovie.id}
             style={{
@@ -73,30 +89,46 @@ const MoviesIntroSection = () => {
             onClick={() => {
               router(`/articles/article-details/${suggestionMovie.id}`);
             }}
-            className="flex items-center gap-2 cursor-pointer rounded-sm p-1 mx-1 border-2 border-orange-900 z-0"
+            className="flex items-center gap-2 w-full h-[100px] cursor-pointer rounded-sm mx-1  z-0"
           >
-            <div className=" w-[40%]">
+            <div className="w-[30%] h-full">
               <img
-                className="w-full h-[100px]"
+                className="w-[100px] h-[100px] object-cover"
                 src={suggestionMovie?.thumbnail}
                 alt=""
               />
             </div>
-            <div className="w-[60%]">
+            <div className="w-[70%] flex flex-col gap-2 pr-2">
               <span
-                className={`text-[16px] font-[500] ${
+                className={`text-[14px] font-[700] ${
                   isHover.value === suggestionMovie.id && "text-red-600"
                 }`}
               >{`${suggestionMovie?.title}`}</span>
+               {/* published */}
+               <span className="text-gray-600 text-[12px] pb-1">
+                  {manageDateFormate(suggestionMovie.created_at)}
+                </span>
+
             </div>
           </div>
         ))}
-        
-
       </div>
-        {/* <div className="fixed right-48 bottom-24 z-[1000] overflow-hidden">
+      {/* <div className="fixed right-48 bottom-24 z-[1000] overflow-hidden">
                 <FaArrowAltCircleDown className="text-[40px]"/>
         </div> */}
+    </div>
+
+    <div className="w-[90%] lg:w-full mx-auto">
+
+    <div onClick={()=>{
+        router(`/articles/genres/${selectedGenreForMovie.value}`)
+      }} className=" bg-slate-900 inline-block px-5 py-2 text-white font-bold cursor-pointer">
+        <span className="flex gap-2 items-center">
+        <p>See All</p>
+        <FaAnglesRight/>
+        </span>
+      </div>
+    </div>
     </div>
     // </Center>
   );

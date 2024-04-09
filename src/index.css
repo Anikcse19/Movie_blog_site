@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Signika&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Signika&display=swap") * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,7 +14,7 @@ body {
 }
 
 #poster-box:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   transition-property: all;
   transition-duration: 3ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);

@@ -79,10 +79,10 @@ const [isHover, setIshover] = useState({
   return (
     <Layout>
       {/* advertise */}
-
-      <div className="my-2 mx-3 md:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
 
       {/* route */}
       <div className="px-3 md:px-0">
@@ -235,13 +235,14 @@ const [isHover, setIshover] = useState({
         </div>
       </div>
       {/* advertise */}
-      <div className="my-2 mx-3 md:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
 
       {/* articles and adds */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-10 px-3 lg:px-0">
+      <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-5 px-3 lg:px-0">
         {/* articles */}
         <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3 ">
           {upcoming.slice(0,12).map((up) => (
@@ -254,7 +255,7 @@ const [isHover, setIshover] = useState({
             style={{
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
-            className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md border-4 border-white"
+            className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md "
           >
             <div
             //   onClick={() => {
@@ -265,10 +266,10 @@ const [isHover, setIshover] = useState({
               <img className="w-[100%] h-full" src={`https://image.tmdb.org/t/p/w500${up?.poster_path}`} alt="" />
             </div>
       
-            <span className={`px-1 ${
+            <span className={`px-1 font-bold ${
                 isHover.value === up.id && "text-red-600"
               } `}>{`${up?.title.slice(0, 35)}....`}</span>
-            <span className="px-1 pb-1">
+            <span className="px-1 pb-1 text-gray-800 text-[12px]">
               {manageDateFormate(up?.release_date)}
             </span>
           </div>
@@ -278,7 +279,7 @@ const [isHover, setIshover] = useState({
         {/* adds and etc */}
         <div className="w-full flex flex-col self-start">
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 1</div>
+          <div className="bg-gray-400 h-[250px]">adds 1</div>
 
           {/* popular posts */}
           <div className="my-2">
@@ -298,7 +299,7 @@ const [isHover, setIshover] = useState({
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
 
           {/* genres */}
           <div className="my-3">
@@ -332,7 +333,7 @@ const [isHover, setIshover] = useState({
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
 
           {/* newsletter */}
           <div
@@ -370,13 +371,14 @@ const [isHover, setIshover] = useState({
           </div>
 
           {/* adds */}
-          <div className="bg-red-800 h-[250px]">adds 2</div>
+          <div className="bg-gray-400 h-[250px]">adds 2</div>
         </div>
       </div>
       {/* advertise */}
-      <div className="my-2 mx-3 lg:mx-0">
-        <img src="/image/homePageAds.png" alt="" />
-      </div>
+      
+     <div className="w-[90%] lg:w-full mx-auto my-5">
+          <img className="w-full" src={images.addImage} alt="" />
+        </div>
     </Layout>
   );
 };

@@ -14,37 +14,47 @@ export default function BannerSlider({ slides }) {
           delay: 2000,
         }}
         modules={[Autoplay]}
-        className="mySwiper"
+        className="mySwiper h-full"
       >
         {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div className="flex flex-col md:flex-row items-center w-[100%] gap-5 ">
+          <SwiperSlide className="h-full"  key={slide.id}>
+            <div 
+            className="flex flex-col lg:flex-row  w-[100%] h-full gap-2  rounded-sm overflow-hidden">
 
               {/* slider image */}
               <div onClick={()=>{
                   router(`/articles/article-details/${slide.id}`)
-              }} className="w-[100%] md:w-[60%] h-[300px] self-baseline cursor-pointer  p-1">
+              }} className="w-[100%] xl:w-[60%] h-full
+               self-baseline cursor-pointer p-1">
                 <img
-                  className="w-[100%] h-full"
+                  className="w-[100%] h-[200px] lg:h-full object-cover rounded-sm"
                   src={slide?.thumbnail}
                   alt=""
                 />
               </div>
 
               {/* slider title and details */}
-              <div className="flex flex-col  self-start w-[100%] md:w-[40%] ">
+              <div className="flex flex-col  self-start w-[90%] mx-auto xl:w-[40%] mt-3">
 
                 {/* slider title */}
                 <span className="pb-1">
-                  <h1 className="text-black font-bold text-[28px]">
+                  <h1 className="text-black font-semibold text-base xl:text-[22px]">
                     {slide?.title}
                   </h1>
                 </span>
 
                 {/* slider details */}
-                <span className="text-gray-700 text-[14px] p-1">
-                  {slide?.summery ? `${slide?.summery.slice(0,300)}...` : slide?.tags}
+                <span className="text-gray-700 hidden lg:block text-[12px] py-6 pr-1">
+                  {slide?.summery ? `${slide?.summery.slice(0,200)}...` : slide?.tags}
                 </span>
+
+                <span className="text-gray-700 block lg:hidden text-[12px] py-6 pr-1">
+                  {slide?.summery ? `${slide?.summery.slice(0,100)}...` : slide?.tags}
+                </span>
+
+                <span onClick={()=>{
+                  router(`/articles/article-details/${slide?.id}`)
+                }} className="px-1 pb-2 xl:pb-0 cursor-pointer text-gray-800 font-bold">{`Read More >>`}</span>
               </div>
             </div>
           </SwiperSlide>

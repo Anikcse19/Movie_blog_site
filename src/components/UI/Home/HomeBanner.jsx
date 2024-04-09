@@ -62,9 +62,13 @@ const HomeBanner = () => {
   };
   return (
     // <Center>
-    <div className="flex flex-col lg:flex-row items-center gap-4 my-3">
+    <div className="flex flex-col lg:flex-row w-full gap-y-5  lg:gap-x-2 my-3">
+
       {/* slider */}
-      <div className="w-[100%] lg:w-[70%] px-3 lg:p-0  text-white text-[20px]  max-w-[1360px] mx-auto">
+      <div
+       style={{
+        boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"}}
+      className="w-[90%] lg:w-[65%]  text-white mx-auto bg-gray-200">
         {/* <Carousel slides={slides} /> */}
         {!articles.length > 0 && (
 
@@ -100,10 +104,12 @@ const HomeBanner = () => {
       </div>
 
       {/* suggestion */}
-     
-      <div className="w-[100%] lg:w-[30%] h-full px-2 lg:px-0 flex flex-col gap-4">
+      <div className="w-[90%] xl:w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+
+        {/* skeleton */}
       {
-          !suggestionMovies.length>0 && <div className="w-[300px] h-[300px] animate-pulse ">
+          !suggestionMovies.length>0 && 
+          <div className="w-[300px] h-[300px] animate-pulse ">
             <div className="w-full bg-gray-400 h-full">
              
             </div>
@@ -111,35 +117,44 @@ const HomeBanner = () => {
         }
        
         {reverseSuggestionMovies?.length > 0 &&
-          reverseSuggestionMovies.slice(0, 3).map((suggestionMovie) => (
+          reverseSuggestionMovies.slice(3,6).map((suggestionMovie) => (
             <div
               key={suggestionMovie.id}
+
               style={{
                 boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
               }}
+
               onMouseEnter={() =>
                 setIshover({ value: suggestionMovie.id, state: true })
               }
+
               onMouseLeave={() => setIshover({ value: null, state: false })}
+
               onClick={() => {
                 router(`/articles/article-details/${suggestionMovie.id}`);
               }}
-              className="flex items-center gap-2 border md:border-2 border-orange-900 cursor-pointer rounded-sm p-1"
+
+              className="w-full h-[100px] flex  gap-2  cursor-pointer rounded-sm overflow-hidden"
             >
-              <div className="w-[20%] md:w-[40%] h-[50px] md:h-[100px]">
+              <div className="w-[30%] h-full ">
                 <img
-                  className="w-full h-full"
+                
+                  className="w-[100px] h-full object-cover"
                   src={suggestionMovie?.thumbnail}
                   alt=""
                 />
               </div>
-              <div className="flex-grow flex flex-col gap-1">
+              <div className="w-[65%] flex flex-col justify-between gap-1 pt-3">
+                {/* ttile */}
                 <span
-                  className={`text-[12px] md:text-[16px] font-[500] ${
+                  className={`text-[12px] xl:text-[14px] font-[700] ${
                     isHover.value === suggestionMovie.id && "text-red-600"
                   }`}
-                >{`${suggestionMovie?.title.slice(0, 25)}..`}</span>
-                <span className="text-gray-600 text-[14px]">
+                >{`${suggestionMovie?.title}`}</span>
+
+                {/* published */}
+                <span className="text-gray-600 text-[12px] pb-1">
                   {manageDateFormate(suggestionMovie.created_at)}
                 </span>
               </div>
