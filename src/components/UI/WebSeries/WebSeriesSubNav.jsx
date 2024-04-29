@@ -20,8 +20,8 @@ const WebSeriesSubNav = () => {
 
   return (
     // <Center>
-    <div className="w-[90%] xl:w-full mx-auto flex items-center justify-between my-2 border-b-2 border-[#2a3fe3] lg:mx-0">
-      <div className="bg-[#2a3fe3] px-3 py-2 text-white font-bold">
+    <div className="w-[90%] xl:w-full mx-auto flex items-center justify-between my-2 border-b-2 border-[#39aa51] lg:mx-0">
+      <div className="bg-[#39aa51] px-3 py-2 text-white font-bold">
         Web Series
       </div>
       {/* for mobile version  */}
@@ -31,17 +31,17 @@ const WebSeriesSubNav = () => {
           className="flex gap-2 items-center"
         >
           {openMoviesSubNav ? (
-            <IoIosArrowBack className="text-[#2a3fe3] font-semibold text-lg" />
+            <IoIosArrowBack className="text-[#39aa51] font-semibold text-lg" />
           ) : (
-            <IoIosArrowDown className="text-[#2a3fe3] font-semibold text-lg" />
+            <IoIosArrowDown className="text-[#39aa51] font-semibold text-lg" />
           )}
-          <span className="font-semibold text-[#2a3fe3] cursor-pointer">See Options</span>
+          <span className="font-semibold text-[#39aa51] cursor-pointer">See Options</span>
         </div>
         {/* dropdown */}
         <div
           className={`${
             openMoviesSubNav
-              ? "bg-[#2a3fe3]  py-5 px-8 rounded-md "
+              ? "bg-[#39aa51]  py-5 px-8 rounded-md "
               : "px-0 py-0 opacity-0"
           } transition-all duration-500 ease-in-out absolute top-8 right-0 z-[1000]`}
         >

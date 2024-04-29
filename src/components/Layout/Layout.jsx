@@ -1,13 +1,15 @@
 
 import { useState } from "react";
-import { CgMenuGridR } from "react-icons/cg";
 import { FaCalendarAlt, FaHome } from "react-icons/fa";
+import { TiThMenu } from "react-icons/ti";
+
 import { ImFilm } from "react-icons/im";
 import { MdOndemandVideo } from "react-icons/md";
 import { TfiWrite } from "react-icons/tfi";
 import { useNavigate } from "react-router-dom";
 import Center from "../Shared/Center/Center";
 import Footer from "../Shared/Footer/Footer";
+import Header from "../Shared/Header/Header";
 import Navbar from "../Shared/Navbar/Navbar";
 
 
@@ -18,13 +20,13 @@ const Layout = ({ children }) => {
   return (
     <div>
      
-        {/* <Header/>  */}
+        <Header/> 
         <div className="w-[90%] lg:w-full  block lg:hidden my-5 cursor-pointer mx-auto">
           <span onClick={()=>{
             setMobileNavOpen(!mobileNavOpen)
-          }} className=" bg-black flex items-center  gap-3 px-3 py-2 text-white font-bold">
-            <CgMenuGridR className="text-lg"/>
-            <span>See Menu</span>
+          }} className="  flex items-center  gap-3 text-black font-bold">
+            <TiThMenu className="text-lg"/>
+            
             </span>
 
             {/* dropdown */}

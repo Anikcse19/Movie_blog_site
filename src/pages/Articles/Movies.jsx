@@ -111,9 +111,9 @@ const MoviesPage = () => {
           {/* poster title */}
           <div
             id="poster-title"
-            className=" absolute top-96 left-12 opacity-0 transition-all duration-300 ease-in"
+            className="w-[90%] absolute bottom-4 left-6 opacity-0 transition-all duration-300 ease-in"
           >
-            <h1 className="text-white self-end text-2xl font-extrabold">
+            <h1 className="text-white bg-black w-[100%] mx-auto px-5 py-5 opacity-90 self-end text-3xl font-extrabold">
               {reversedMovies[0]?.title}
             </h1>
           </div>
@@ -150,8 +150,8 @@ const MoviesPage = () => {
                 id="poster-title"
                 className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
-                 self-end text-[16px] font-extrabold">
+                <h1 className="w-[100%] text-white bg-black opacity-90 px-2 py-1
+                 self-end text-lg font-extrabold">
                 {reversedMovies[1]?.title}
                 </h1>
               </div>
@@ -186,8 +186,8 @@ const MoviesPage = () => {
                 id="poster-title"
                 className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
-                 self-end text-[16px] font-extrabold">
+                <h1 className="w-[100%] text-white bg-black opacity-90 px-2 py-1
+                 self-end text-lg font-extrabold">
                 {reversedMovies[2]?.title}
                 </h1>
               </div>
@@ -223,8 +223,8 @@ const MoviesPage = () => {
                 id="poster-title"
                 className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
-                 self-end text-[16px] font-extrabold">
+                <h1 className="w-[100%] text-white bg-black opacity-90 px-2 py-1
+                 self-end text-lg font-extrabold">
                 {reversedMovies[3]?.title}
                 </h1>
               </div>
@@ -254,9 +254,10 @@ const MoviesPage = () => {
               {/* poster title */}
               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
+                <h1 className="w-[100%] text-white bg-black opacity-90 px-2 py-1
+                 self-end text-lg font-extrabold">
                   {reversedMovies[4]?.title}
                 </h1>
               </div>

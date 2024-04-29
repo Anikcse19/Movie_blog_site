@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import images from "../../../../config";
 import Center from "../Center/Center";
@@ -21,7 +20,7 @@ const Header = () => {
             <img className="w-[100px] md:w-full" src={images.logo} alt="" />
           </div>
           {/* search bar */}
-          <div className="w-[40%] md:flex items-center border border-black rounded-md overflow-hidden hidden">
+          {/* <div className="w-[40%] md:flex items-center border border-black rounded-md overflow-hidden hidden">
             <input
               className="px-3 outline-none w-full"
               type="text"
@@ -30,7 +29,7 @@ const Header = () => {
             <span className="bg-red-600 px-4 py-2 text-white">
               <FaSearch className="text-xl" />
             </span>
-          </div>
+          </div> */}
           {/* {/*profile button  */}
           {token ? (
             <div>
@@ -38,7 +37,7 @@ const Header = () => {
                 onClick={() => {
                   localStorage.removeItem("token");
                 }}
-                className="bg-red-600 px-5 py-2 text-white font-bold rounded-md cursor-pointer"
+                className="bg-red-600 px-3 py-1 md:px-5 md:py-2 text-white font-bold rounded-md cursor-pointer"
               >
                 Sign Out
               </span>

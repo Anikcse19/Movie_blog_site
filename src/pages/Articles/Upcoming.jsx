@@ -126,7 +126,7 @@ const [isHover, setIshover] = useState({
             id="poster-title"
             className="w-[80%] absolute top-96 left-6 opacity-0 transition-all duration-300 ease-in"
           >
-            <h1 className="text-white bg-black w-[90%] mx-auto px-5 py-5 opacity-60 self-end text-3xl font-extrabold">
+            <h1 className="text-white bg-black w-[90%] mx-auto px-5 py-5 opacity-90 self-end text-3xl font-extrabold">
               {upcoming[0]?.title}
             </h1>
           </div>
@@ -153,7 +153,7 @@ const [isHover, setIshover] = useState({
                 id="poster-title"
                 className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                <h1 className="w-[90%] text-white bg-black opacity-90 px-6 py-6
                  self-end text-[16px] font-extrabold">
                 {upcoming[1]?.title}
                 </h1>
@@ -178,7 +178,7 @@ const [isHover, setIshover] = useState({
                 id="poster-title"
                 className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                <h1 className="w-[90%] text-white bg-black opacity-90 px-6 py-6
                  self-end text-[16px] font-extrabold">
                 {upcoming[2]?.title}
                 </h1>
@@ -205,7 +205,7 @@ const [isHover, setIshover] = useState({
                 id="poster-title"
                 className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                <h1 className="w-[90%] text-white bg-black opacity-90 px-6 py-6
                  self-end text-[16px] font-extrabold">
                 {upcoming[3]?.title}
                 </h1>
