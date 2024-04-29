@@ -45,7 +45,7 @@ export default function BannerSlider({ slides }) {
                 </span>
 
                 {/* slider details */}
-                <span className="text-gray-700 hidden lg:block text-[12px] py-6 pr-1">
+                <span className="text-gray-700 hidden lg:block text-[12px] py-6 pr-5">
                   {slide?.summery ? `${slide?.summery.slice(0,200)}...` : slide?.tags}
                 </span>
 
