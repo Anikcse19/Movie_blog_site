@@ -3,8 +3,6 @@ import Cookies from "js-cookie";
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaLock } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
 import { CirclesWithBar } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import images from "../../../config";
@@ -49,12 +47,13 @@ const LoginPage = () => {
         setIsLoading(false);
       } else {
         setError(true);
+        setIsLoading(false)
       }
     });
   };
   return (
-    <div className="bg-gradient-to-br from-pink-300 to-blue-300 min-h-screen px-48 py-24">
-      <div className=" relative w-full flex flex-col gap-y-6 items-center justify-center px-24 py-12">
+    <div className="bg-gray-300 min-h-screen flex items-center py-12">
+      <div className="bg-white w-[90%]  lg:w-[50%] mx-auto flex flex-col gap-y-12 items-center justify-center px-5 py-5">
         {/* profile image */}
         <div className="w-16 h-16 rounded-full overflow-hidden">
           <img
@@ -64,42 +63,31 @@ const LoginPage = () => {
           />
         </div>
         {/* form  start*/}
-        <div className="flex flex-col gap-y-5">
-          <div className="px-5 py-2 rounded-md border-2 border-blue-700 ">
-            <div className="flex items-center gap-5">
-              <div className="w-6 h-6 rounded-full overflow-hidden">
-                {" "}
-                <MdOutlineEmail className="font-bold text-[18px]" />
-              </div>
-              <input
+        <div className="w-full flex flex-col gap-y-5">
+          
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md ">
+          <input
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Write your mail"
-                className="px-3 py-2 rounded bg-[#DAAEE9]   outline-none mb-0"
+                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
                 type="email"
               />
-            </div>
-          </div>
           {emailMissingError && (
-            <span className="text-red-500">Email required</span>
+            <span className="text-red-500 block mt-3">Email required</span>
           )}
-          <div className="px-5 py-2 rounded-md border-2 border-blue-700 ">
-            <div className="flex items-center gap-5">
-              <div className="w-6 h-6 rounded-full overflow-hidden">
-                {" "}
-                <FaLock />{" "}
-              </div>
-              <input
+          </div>
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md  ">
+          <input
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Type Password"
-                className="px-3 py-2 rounded bg-[#DAAEE9]  outline-none mb-0"
+                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
                 type="password"
               />
-            </div>
-          </div>
           {passwordMissingError && (
-            <span className="text-red-500">password required</span>
+            <span className="text-red-500 block mt-3">Password required</span>
           )}
-          {error && <span className="text-red-500">Invalid Credentials!</span>}
+          </div>
+          {error && <span className="w-[100%] md:w-[60%] mx-auto text-red-500">Invalid Credentials</span>}
         </div>
         {/* form  end*/}
 
@@ -110,35 +98,34 @@ const LoginPage = () => {
             boxShadow:
               "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
           }}
-          className="bg-[#4778b1] hover:bg-[#6693c7] px-24 py-2 rounded-md  font-extrabold text-[20px] opacity-90 cursor-pointer"
+          className=" mx-auto px-8 py-2 bg-black text-white hover:bg-white hover:border hover:border-black hover:text-black rounded-md  font-extrabold text-center cursor-pointer"
         >
           <span>Login</span>
         </div>
         {/* login Button end*/}
 
-        {/* loader start */}
         {isLoading && (
-          <div className="w-full flex justify-center items-center">
-            <CirclesWithBar
-              height="50"
-              width="50"
-              color="red"
-              outerCircleColor="red"
-              innerCircleColor="red"
-              barColor="red"
-              ariaLabel="circles-with-bar-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-          </div>
-        )}
-        {/* loader end */}
+  <div className="w-full flex justify-center items-center">
+    <CirclesWithBar
+      height="50"
+      width="50"
+      color="red"
+      outerCircleColor="red"
+      innerCircleColor="red"
+      barColor="red"
+      ariaLabel="circles-with-bar-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+    />
+  </div>
+)}
+
         <div>
           <span>
-            New User? Please{" "}
+            New User? please {" "}
             <Link className="text-blue-900 underline" to="/auth/registration">
-              Registration first
+              Registration here
             </Link>
           </span>
         </div>
@@ -148,3 +135,5 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+

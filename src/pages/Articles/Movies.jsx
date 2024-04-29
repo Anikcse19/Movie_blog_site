@@ -62,7 +62,7 @@ const MoviesPage = () => {
 
       {/* route */}
       <div className="w-[90%] xl:w-full mx-auto ">
-        <span className="text-gray-700 text-[15px]">Home {">"} Movies</span>
+        <span className="text-gray-700 text-[15px] inline-block"><p onClick={()=>router('/')} className="inline hover:text-red-600 hover:underline cursor-pointer">Home</p> {">"} Movies</span>
       </div>
 
       {/* Movies tag */}
@@ -97,7 +97,8 @@ const MoviesPage = () => {
           {/* poster thumbnail */}
           <div
             onClick={() =>
-              router(`/articles/article-details/${reversedMovies[0]?.id}`)
+             { router(`/articles/article-details/${reversedMovies[0]?.id}`)
+              window.scrollTo(0,0)}
             }
             className="poster-img w-full h-[300px] xl:h-[520px] block opacity-100 transition-all duration-300 ease-in overflow-hidden "
           >
@@ -133,7 +134,8 @@ const MoviesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articlesdetails/${reversedMovies[1]?.id}`)
+                  {router(`/articlesdetails/${reversedMovies[1]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -146,10 +148,11 @@ const MoviesPage = () => {
               {/* poster title */}
               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
-                  {reversedMovies[1]?.title}
+                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                 self-end text-[16px] font-extrabold">
+                {reversedMovies[1]?.title}
                 </h1>
               </div>
             </div>
@@ -166,7 +169,9 @@ const MoviesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articles/article-details/${reversedMovies[2]?.id}`)
+                 { router(`/articles/article-details/${reversedMovies[2]?.id}`)
+                 window.scrollTo(0,0)
+                }
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -179,10 +184,11 @@ const MoviesPage = () => {
               {/* poster title */}
               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
-                  {reversedMovies[2]?.title}
+                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                 self-end text-[16px] font-extrabold">
+                {reversedMovies[2]?.title}
                 </h1>
               </div>
             </div>
@@ -201,7 +207,8 @@ const MoviesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articles/article-details/${reversedMovies[3]?.id}`)
+                 { router(`/articles/article-details/${reversedMovies[3]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -211,13 +218,14 @@ const MoviesPage = () => {
                   alt=""
                 />
               </div>
-              {/* poster title */}
-              <div
+             {/* poster title */}
+             <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
-                  {reversedMovies[3]?.title}
+                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                 self-end text-[16px] font-extrabold">
+                {reversedMovies[3]?.title}
                 </h1>
               </div>
             </div>
@@ -232,7 +240,8 @@ const MoviesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articles/article-details/${reversedMovies[4]?.id}`)
+                 { router(`/articles/article-details/${reversedMovies[4]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -312,7 +321,9 @@ const MoviesPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {genres.map((genre) => (
                 <div
-                  onClick={() => router(`/articles/Genres/${genre?.id}`)}
+                  onClick={() => {router(`/articles/Genres/${genre?.id}`)
+                  window.scrollTo(0,0)
+                }}
                   key={genre?.id}
                   className="bg-[#0386FF] hover:bg-[#599ddd] p-1 flex justify-between text-white cursor-pointer"
                 >

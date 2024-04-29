@@ -88,6 +88,7 @@ const WebSeriesIntroSection = () => {
               onMouseLeave={() => setIshover({ value: null, state: false })}
               onClick={() => {
                 router(`/articles/article-details/${suggestionMovie.id}`);
+                window.scrollTo(0,0)
               }}
               className="flex items-center gap-2 w-full h-[100px] cursor-pointer rounded-sm mx-1  z-0"
             >
@@ -122,6 +123,7 @@ const WebSeriesIntroSection = () => {
 
       <div onClick={()=>{
         router(`/articles/genres/${selectedGenreForWebSeries.value}`)
+        window.scrollTo(0,0)
       }} className=" bg-slate-900 inline-block px-5 py-2 text-white font-bold cursor-pointer">
         <span className="flex gap-2 items-center">
         <p>See All</p>

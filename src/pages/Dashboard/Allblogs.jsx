@@ -222,11 +222,11 @@ const AllBlogsPage = () => {
                       ))}
                     </td>
                     <td className="px-3 py-3 text-center">
-                      {`${
-                        article?.tags
-                          ? `${article?.tags?.slice(0, 10)}..`
-                          : "N/A"
-                      }`}
+                    {article?.tags.map((tag, i) => (
+                        <div className="inline p-1" key={i}>
+                          {!tag ? "N/A" : tag?.name}
+                        </div>
+                      ))}
                     </td>
                     <td className="px-3 py-3 text-center">
                       {manageDateFormate(article?.created_at)}

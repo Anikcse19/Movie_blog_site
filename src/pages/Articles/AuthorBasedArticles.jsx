@@ -32,7 +32,7 @@ import SuggestionCard from "../../components/Shared/Card/SuggestionCard";
   ];
   
 
-const SingleGenreContentPage = () => {
+const AuthorBasedArticle = () => {
 
     const router=useNavigate()
     const [isHover, setIshover] = useState({
@@ -44,16 +44,32 @@ const SingleGenreContentPage = () => {
     // const [latestWebSeriesArticles,setLatestWebSeriesArticles]=useState([])
     const [genres,setGenres]=useState([])
     const [content,setContent]=useState({})
+    const [tags,setTags]=useState([])
     
     useEffect(()=>{
 
-      axios.get(`${base_url}/genres/${id}`).then(res=>setContent(res.data.genre))
+      axios.get(`${base_url}/tags`).then(res=>setTags(res?.data?.tags))
+ 
+
+      axios.get(`${base_url}/articles?user_id=${id}`).then(res=>setContent(res?.data?.articles))
       
   
       // get all genres
       axios.get(`${base_url}/genres`).then(res=>setGenres(res?.data?.genres))
     },[id])
 
+    const currentTag=tags.find(tag=>{
+      if(tag?.id==id){
+        
+        return tag
+      }
+    })
+
+         
+       
+
+
+    
 
 
     const manageDateFormate = (date) => {
@@ -77,15 +93,15 @@ const SingleGenreContentPage = () => {
         </div>
 
       {/* route */}
-      <div className=" w-[90%] lg:w-full mx-auto ">
-        <span className="text-gray-700 text-[15px]"><p onClick={()=>router('/')} className="inline cursor-pointer hover:text-red-600 hover:underline">Home</p> {">"} {content?.title}</span>
-      </div>
+      {/* <div className=" w-[90%] lg:w-full mx-auto ">
+        <span className="text-gray-700 text-[15px]">Home {">"} Genres{">"} {content?.name}</span>
+      </div> */}
 
-      {/* Movies tag */}
+      {/* page tag */}
       <div className="  w-[90%] lg:w-full mx-auto">
 
-      <div className="bg-red-600 py-2 text-white inline-block mt-2 px-3">
-        <span>{content?.title}</span>
+      <div className=" text-white inline-block mt-2 ">
+       <span className="text-red-600 text-base lg:text-2xl">Searched By Author:</span> <span className="text-black font-bold text-base lg:text-2xl py-2 px-3">{content[0]?.user?.name}</span>
       </div>
       </div>
 
@@ -94,10 +110,10 @@ const SingleGenreContentPage = () => {
 
       <div className="w-[90%] lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 items-center gap-5  my-3">
         {/* articles */}
-        <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3 ">
-          {content?.articles?.map((article) => {
-            const titleLength=article?.title?.length
-
+        <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 self-start gap-3 ">
+          {content?.length>0 && content?.map((article) => {
+            const titleLength=article?.title?.length 
+            console.log(titleLength)
             return (
               <div
               key={article.id}
@@ -120,23 +136,9 @@ const SingleGenreContentPage = () => {
                 <img className="w-[100%] h-full object-cover" src={article?.thumbnail} alt="" />
               </div>
         
-            {/* title */}
-      <span
-        className={`px-1 hidden lg:block ${
-          isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[14px]`}
-      >{titleLength>50 ? `${article?.title?.slice(0,50)}...`: article?.title}</span>
-      <span
-        className={`px-1 hidden sm:block lg:hidden ${
-          isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[16px]`}
-      >{titleLength>35 ? `${article?.title?.slice(0,35)}...`: article?.title}</span>
-      <span
-        className={`px-1 block sm:hidden ${
-          isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[16px]`}
-      >{titleLength>15 ? `${article?.title?.slice(0,15)}...`: article?.title}</span>
-
+              <span className={`px-1 ${
+                  isHover.value === article.id && "text-red-600"
+                } font-semibold hover:text-red-600`}>{article?.title} </span>
   
   
               <div className="flex flex-col lg:flex-row lg:items-center gap-2 justify-between ">
@@ -147,10 +149,9 @@ const SingleGenreContentPage = () => {
                   <span 
                   onClick={()=>{
                     router(`${article?.category_id==1?"/articles/movies":article?.category_id==2 ? "articles/tv-shows":"/articles/web-series"}`)
-
                     window.scrollTo(0,0)
                   }} 
-                  className="text-[10px] md:text-[12px] font-bold mx-1 bg-slate-800  hover:bg-orange-900 px-1 py-1 rounded-sm text-white animate-pulse" >{
+                  className="text-[10px] md:text-[12px] font-bold mx-1 bg-slate-800 hover:bg-slate-700 px-1 py-1 rounded-sm text-white animate-pulse" >{
                       article?.category_id==1?"Movie":article?.category_id==2?"TV Shows":article?.category_id==3 && "Web Series"
                   }</span>      
               </div>
@@ -198,12 +199,11 @@ const SingleGenreContentPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {genres.map((genre) => (
                 <div
-                onClick={()=>{
-                  router(`/articles/genres/${genre?.id}`)
-                  window.scrollTo(0,0)
-                }}
+                onClick={()=>{router(`/articles/genres/${genre?.id}`)
+                window.scrollTo(0,0)
+              }}
                   key={genre?.id}
-                  className="bg-[#0386FF] hover:bg-[#5f95c7] p-1 flex justify-between text-white cursor-pointer"
+                  className="bg-[#0386FF] hover:bg-[#3b93e5] hover:shadow-xl p-1 flex justify-between text-white cursor-pointer"
                 >
                   <div className="flex gap-2 items-center">
                     <span>
@@ -270,4 +270,4 @@ const SingleGenreContentPage = () => {
   )
 }
 
-export default SingleGenreContentPage
+export default AuthorBasedArticle

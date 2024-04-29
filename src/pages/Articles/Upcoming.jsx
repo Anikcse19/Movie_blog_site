@@ -84,9 +84,10 @@ const [isHover, setIshover] = useState({
           <img className="w-full" src={images.addImage} alt="" />
         </div>
 
-      {/* route */}
-      <div className="px-3 md:px-0">
-        <span className="text-gray-700 text-[15px]">Home {">"} Upcoming</span>
+        <div className="w-[90%] xl:w-full mx-auto ">
+        <span className="text-gray-700 text-[15px] inline-block"><p onClick={()=>{router('/')
+       window.scrollTo(0,0)
+      }} className="inline hover:text-red-600 hover:underline cursor-pointer">Home</p> {">"} Upcoming</span>
       </div>
 
       {/* Movies tag */}
@@ -123,9 +124,9 @@ const [isHover, setIshover] = useState({
           {/* poster title */}
           <div
             id="poster-title"
-            className=" absolute top-96 left-12 opacity-0 transition-all duration-300 ease-in"
+            className="w-[80%] absolute top-96 left-6 opacity-0 transition-all duration-300 ease-in"
           >
-            <h1 className="text-white self-end text-2xl font-extrabold">
+            <h1 className="text-white bg-black w-[90%] mx-auto px-5 py-5 opacity-60 self-end text-3xl font-extrabold">
               {upcoming[0]?.title}
             </h1>
           </div>
@@ -150,9 +151,10 @@ const [isHover, setIshover] = useState({
               {/* poster title */}
               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
+                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                 self-end text-[16px] font-extrabold">
                 {upcoming[1]?.title}
                 </h1>
               </div>
@@ -174,9 +176,10 @@ const [isHover, setIshover] = useState({
               {/* poster title */}
               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
+                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                 self-end text-[16px] font-extrabold">
                 {upcoming[2]?.title}
                 </h1>
               </div>
@@ -197,12 +200,13 @@ const [isHover, setIshover] = useState({
                   alt=""
                 />
               </div>
-              {/* poster title */}
-              <div
+               {/* poster title */}
+               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
+                <h1 className="w-[90%] text-white bg-black opacity-80 px-6 py-6
+                 self-end text-[16px] font-extrabold">
                 {upcoming[3]?.title}
                 </h1>
               </div>
@@ -224,9 +228,10 @@ const [isHover, setIshover] = useState({
               {/* poster title */}
               <div
                 id="poster-title"
-                className=" absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
+                className="w-[90%] absolute bottom-8 left-2 opacity-0 transition-all duration-300 ease-in"
               >
-                <h1 className="text-white self-end text-[14px] font-extrabold">
+                <h1 className="w-[90%] text-white bg-black opacity-90 px-6 py-6
+                 self-end text-[16px] font-extrabold">
                 {upcoming[4]?.title}
                 </h1>
               </div>
@@ -245,35 +250,40 @@ const [isHover, setIshover] = useState({
       <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-5 px-3 lg:px-0">
         {/* articles */}
         <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-2 self-start gap-3 ">
-          {upcoming.slice(0,12).map((up) => (
-            <div
-            key={up.id}
-            onMouseEnter={() =>
-              setIshover({ value: up.id, state: true })
-            }
-            onMouseLeave={() => setIshover({ value: null, state: false })}
-            style={{
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            }}
-            className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md "
-          >
-            <div
-            //   onClick={() => {
-            //     router.push(`/ArticleDetails/${article.id}`);
-            //   }}
-            className="w-[100%] h-[125px] md:h-[250px] flex items-center justify-center"
+          {upcoming.slice(0,12).map((up) => {
+            const titleLength=up?.title?.length
+
+            return (
+              <div
+              key={up.id}
+              onMouseEnter={() =>
+                setIshover({ value: up.id, state: true })
+              }
+              onMouseLeave={() => setIshover({ value: null, state: false })}
+              style={{
+                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              }}
+              className="flex flex-col justify-between gap-2  py-3 px-3 cursor-pointer rounded-md "
             >
-              <img className="w-[100%] h-full" src={`https://image.tmdb.org/t/p/w500${up?.poster_path}`} alt="" />
+              <div
+              //   onClick={() => {
+              //     router.push(`/ArticleDetails/${article.id}`);
+              //   }}
+              className="w-[100%] h-[125px] md:h-[250px] flex items-center justify-center"
+              >
+                <img className="w-[100%] h-full" src={`https://image.tmdb.org/t/p/w500${up?.poster_path}`} alt="" />
+              </div>
+        
+              <span className={`px-1 font-bold ${
+                  isHover.value === up.id && "text-red-600"
+                } `}>{titleLength>40 ? `${up?.title?.slice(0,40)}...`: up?.title}</span>
+              <span className="px-1 pb-1 text-gray-800 text-[12px]">
+                {manageDateFormate(up?.release_date)}
+              </span>
             </div>
-      
-            <span className={`px-1 font-bold ${
-                isHover.value === up.id && "text-red-600"
-              } `}>{`${up?.title.slice(0, 35)}....`}</span>
-            <span className="px-1 pb-1 text-gray-800 text-[12px]">
-              {manageDateFormate(up?.release_date)}
-            </span>
-          </div>
-          ))}
+            )
+          }
+          )}
         </div>
 
         {/* adds and etc */}
@@ -313,7 +323,9 @@ const [isHover, setIshover] = useState({
             <div className="grid grid-cols-2 gap-3">
               {genres.map((genre) => (
                 <div
-                onClick={()=>router(`/articles/Genres/${genre?.id}`)}
+                onClick={()=>{router(`/articles/Genres/${genre?.id}`)
+                window.scrollTo(0,0)
+              }}
                   key={genre?.id}
                   className="bg-[#0386FF] hover:bg-[#85bdf1f8] p-1 flex justify-between cursor-pointer text-white"
                 >

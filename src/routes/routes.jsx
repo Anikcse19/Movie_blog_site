@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import ArticleDetailsPage from "../pages/Articles/ArticleDetails";
+import AuthorBasedArticle from "../pages/Articles/AuthorBasedArticles";
 import SingleGenreContentPage from "../pages/Articles/GenreBasedArticlesPage";
 import MoviesPage from "../pages/Articles/Movies";
+import SingleTagContentPage from "../pages/Articles/TagBasedArticlesPage";
 import Top50ArticlesPage from "../pages/Articles/Top10Articles";
 import UpcomingArticlesPage from "../pages/Articles/Upcoming";
 import WebSeriesPage from "../pages/Articles/WebSeries";
@@ -12,6 +14,7 @@ import AllBlogsPage from "../pages/Dashboard/Allblogs";
 import CategoriesPage from "../pages/Dashboard/Categories";
 import BlogEditPage from "../pages/Dashboard/EditBlog";
 import GenresPage from "../pages/Dashboard/Genres";
+import TagsPage from "../pages/Dashboard/Tags";
 import Home from "../pages/HomePage";
 
 const routes = createBrowserRouter([
@@ -46,8 +49,16 @@ const routes = createBrowserRouter([
     element: <SingleGenreContentPage />,
   },
   {
-   path:'/articles/top-10-articles',
-   element:<Top50ArticlesPage/>     
+    path: "/articles/tag/:id",
+    element: <SingleTagContentPage />,
+  },
+  {
+    path: "/articles/author/:id",
+    element: <AuthorBasedArticle />,
+  },
+  {
+    path: "/articles/top-10-articles",
+    element: <Top50ArticlesPage />,
   },
   {
     path: "/auth/login",
@@ -58,32 +69,35 @@ const routes = createBrowserRouter([
     element: <RegistrationPage />,
   },
   {
-    path:'/dashboard',
-    children:[
+    path: "/dashboard",
+    children: [
       {
-        path:'/dashboard/add-new-blog',
-        element:<AddNewBlogPage/>
+        path: "/dashboard/add-new-blog",
+        element: <AddNewBlogPage />,
       },
       {
-        path:'/dashboard/all-blogs',
-        element:<AllBlogsPage/>
+        path: "/dashboard/all-blogs",
+        element: <AllBlogsPage />,
       },
       {
-        path:'/dashboard/categories',
-        element:<CategoriesPage/>
+        path: "/dashboard/categories",
+        element: <CategoriesPage />,
       },
 
       {
-        path:'/dashboard/genres',
-        element:<GenresPage/>
+        path: "/dashboard/genres",
+        element: <GenresPage />,
       },
       {
-        path:'/dashboard/edit-blog/:id',
-        element:<BlogEditPage/>
+        path: "/dashboard/tags",
+        element: <TagsPage />,
       },
-      
-    ]
-  }
+      {
+        path: "/dashboard/edit-blog/:id",
+        element: <BlogEditPage />,
+      },
+    ],
+  },
 ]);
 
 export default routes;

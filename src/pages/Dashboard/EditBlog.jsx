@@ -50,7 +50,13 @@ const BlogEditPage = () => {
         setContent(res?.data?.article?.body);
         setBlogSummery(res?.data?.article?.summery);
         setSelectedCategories(res?.data?.article?.category_id);
-        setTags(res?.data?.article?.tags? res?.data?.article?.tags?.split(","): []);
+        const newTags = res?.data?.article?.tags.map((tag) => {
+          return {
+            id: tag.id,
+            name: tag.name,
+          };
+        });
+        setTags(newTags);
         setThumbnail(res?.data?.article?.thumbnail)
         setIsChecked(res?.data?.article?.top10 ==1 ? true: false)
         const newGenres = res?.data?.article?.genres.map((genre) => {
@@ -87,6 +93,7 @@ const BlogEditPage = () => {
 
   //  create a new array of genre id from selectedGenres
   const selectedIds = selectedGenres?.map((gen) => gen.id);
+  const selectedTagIds=tags.map(tag=>(tag.id))
 
 
   // submit action
@@ -102,7 +109,7 @@ const BlogEditPage = () => {
       body: content,
       category_id: selectedCategories,
       genres: JSON.stringify(selectedIds),
-      tags: tags.join(","),
+      tags: (selectedTagIds),
       top10:isChecked?1:0
     };
 
@@ -114,8 +121,11 @@ const BlogEditPage = () => {
     formData.append("body", blogData.body);
     formData.append("genres", blogData.genres);
     formData.append("category_id", blogData.category_id);
-    formData.append("tags", blogData.tags);
+    // formData.append("tags", blogData.tags);
     formData.append("top10",blogData.top10)
+    blogData.tags.map(tag=>{
+      formData.append('tags[]',tag)
+    })
  
 
     try {
@@ -391,13 +401,13 @@ const BlogEditPage = () => {
                           className="border border-orange-700  px-4 py-1 flex gap-2 items-center"
                           key={i}
                         >
-                          <span>{tag}</span>
+                         <span>{tag?.name}</span>
                           <span
                             onClick={() => {
                               
                               const filteredTag = tags?.filter((t) => {
                                 
-                                return t != tag;
+                                return t.id != tag.id;
                               });
                               setTags(filteredTag);
                             }}
@@ -425,9 +435,53 @@ const BlogEditPage = () => {
                       className="px-5 py-2 outline-none rounded border border-orange-700 "
                     />
                     <span
-                      onClick={() => {
-                        setTags((prev) => [tag, ...prev]);
+                       onClick={() => {
+                        // setTags((prev) => [tag, ...prev]);
                         setTag("");
+                       
+  
+                      fetch(`${base_url}/tags`,{
+                        method:'GET',
+                        headers:{
+                          Accept:'application/json'
+                        }
+                      }).then(res=>res.json()).then(data=>{
+                        if(data?.msg=='success'){
+                          let tagExists;
+                          data?.tags.find(t=>{
+                            
+                            if(t?.name==tag){
+                              tagExists=true
+                              setTags((prev)=>[{
+                                id:t?.id,name:t?.name
+                              },...prev])
+                            }                         
+                          })
+                          if(!tagExists){
+                            const data={
+                              name:tag
+                            }
+                            fetch(`${base_url}/tags/create`, {
+                              method: "POST",
+                              headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`,
+                              },
+                              body: JSON.stringify(data),
+                            }).then(res=>res.json()).then(data=>{
+                              if(data?.msg=='success'){
+                                setTags((prev)=>[{
+                                  id:data?.tag?.id,name:data?.tag?.name
+                                },...prev])
+                              }
+                            })
+                          }
+                        }
+                      })
+  
+                        
+                         
                       }}
                       className="bg-blue-500 px-12 py-2 text-white rounded-md cursor-pointer"
                     >

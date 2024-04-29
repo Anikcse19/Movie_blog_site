@@ -24,6 +24,7 @@ export default function SectionSlider({ slides }) {
               {/* image */}
               <div onClick={()=>{
                 router(`/articles/article-details/${slide.id}`)
+                window.scrollTo(0,0)
               }} className="w-[100%] h-[70%] xl:h-full self-baseline cursor-pointer">
                 <img className="w-[100%] h-full object-cover " src={slide?.thumbnail} alt="" />
               </div>

@@ -42,6 +42,7 @@ const ArticleDetailsPage = () => {
   const [genres,setGenres]=useState([])
   const router = useNavigate();
   const { id } =useParams()
+  const navigate=useNavigate()
   
   useEffect(()=>{
   
@@ -56,10 +57,7 @@ const ArticleDetailsPage = () => {
   },[])
 
 
-  const manageTags=(tags)=>{
-      const tagsArray=tags?.split(",")
-      return tagsArray
-  }
+  
 
   const manageDateFormate = (date) => {
     const newDate = new Date(date);
@@ -86,7 +84,9 @@ const ArticleDetailsPage = () => {
           {/* pathname */}
           <div className="my-2">
             <span className="text-gray-700 text-[10px] md:text-[15px]">
-              Home {">"} {article?.category_id==1?"Movies":"Web Series"} {">"} {article?.title}
+              <p onClick={()=>navigate('/')} className="inline cursor-pointer hover:text-red-600 hover:underline">Home</p>  {">"} <p onClick={()=>{navigate('/articles/movies')
+             window.scrollTo(0,0)
+            }} className="inline cursor-pointer hover:text-red-600 hover:underline">{article?.category_id==1?"Movies":"Web Series"}</p> {">"} {article?.title}
             </span>
           </div>
 
@@ -104,7 +104,9 @@ const ArticleDetailsPage = () => {
             <div className="w-[100%] lg:w-[50%] flex justify-between items-center">
               <span className="text-gray-700 text-[15px] flex items-center gap-3">
                 {" "}
-                <VscAccount /> <p>{article?.user?.name}</p>
+                <VscAccount /> <p onClick={()=>{navigate(`/articles/author/${article?.user?.id}`)
+               window.scrollTo(0,0)
+              }} className="hover:text-red-500 cursor-pointer">{article?.user?.name}</p>
               </span>
               <span className="text-gray-700 text-[15px]">
                 {manageDateFormate(article?.created_at)}
@@ -126,8 +128,10 @@ const ArticleDetailsPage = () => {
           <div>
             <span>Tags:</span>
             <div className="flex items-center flex-wrap gap-3">
-              {manageTags(article?.tags)?.map((tag,i)=>(
-                <span key={i} className="bg-blue-400 px-3 py-1 text-white">{tag}</span>
+              {article?.tags?.map((tag)=>(
+                <span onClick={()=>{navigate(`/articles/tag/${tag?.id}`)
+                window.scrollTo(0,0)
+              }} key={tag?.id} className="bg-blue-400 hover:bg-blue-300 cursor-pointer px-3 py-1 text-white">{tag?.name}</span>
               ))}
             </div>
           </div>
@@ -211,9 +215,11 @@ const ArticleDetailsPage = () => {
               <div className="grid grid-cols-2 gap-3">
                 {genres.map((genre) => (
                   <div
-                  onClick={()=>router(`/articles/genres/${genre?.id}`)}
+                  onClick={()=>{router(`/articles/genres/${genre?.id}`)
+                  window.scrollTo(0,0)
+                }}
                     key={genre?.id}
-                    className="bg-[#0386FF] p-1 flex justify-between cursor-pointer text-white"
+                    className="bg-[#0386FF] hover:bg-[#4183c0] p-1 flex justify-between cursor-pointer text-white"
                   >
                     <div className="flex gap-2 items-center">
                       <span>

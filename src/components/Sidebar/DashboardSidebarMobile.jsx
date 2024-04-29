@@ -46,6 +46,12 @@ const DashboardSidebarMobile = () => {
           }>
             <span>Genres</span>
           </div>
+          <div onClick={()=>{navigate('/dashboard/tags')
+           setIsMobileNavOpen(false)}}   className={
+            `${router.pathname.includes("/tags") && "text-green-300 bg-stone-500 border-l-8 border-green-500  rounded"}  cursor-pointer px-6 py-1`
+          }>
+            <span>Tags</span>
+          </div>
           
         </div>
         {/* left nav end */}

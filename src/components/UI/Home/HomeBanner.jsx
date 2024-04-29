@@ -26,7 +26,12 @@ const HomeBanner = () => {
     // get suggestions articles
     axios
       .get(`${base_url}/articles/suggestions`)
-      .then((res) => setSuggetionMovies(res.data.articles));
+      .then((res) => {
+        if(res?.data){
+          console.log(res?.data,'suggestion');
+          setSuggetionMovies(res?.data?.articles)
+        }
+      });
     // try {
     //   const res=fetch(`${baseUrl}/articles/suggestions`,{
     //     method:"GET",
@@ -68,35 +73,20 @@ const HomeBanner = () => {
       <div
        style={{
         boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"}}
-      className="w-[90%] lg:w-[65%]  text-white mx-auto bg-gray-200">
-        {/* <Carousel slides={slides} /> */}
+      className="w-[90%] lg:w-[65%] h-[350px]  text-white mx-auto bg-gray-200">
+        
         {!articles.length > 0 && (
+          <div className="w-full lg:w-full h-full animate-pulse bg-gray-700 p-3 flex gap-2">
+            <div className="w-[200px] h-[100px] bg-gray-400 animate-pulse">
 
-          // skeleton start
-          <div
-            role="status"
-            className="space-y-8 animate-pulse lg:space-y-0 lg:space-x-8 rtl:space-x-reverse lg:flex lg:items-center w-[700px]"
-          >
-            <div className="flex items-center justify-center w-full h-48 bg-blue-700 rounded sm:w-96 dark:bg-gray-700">
-              <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 18"
-              >
-                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-              </svg>
             </div>
-            <div className="w-full">
-              <div className="h-2.5 bg-blue-700 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-              <div className="h-2 bg-blue-700 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-              <div className="h-2 bg-blue-700 rounded-full dark:bg-gray-700 mb-2.5"></div>
-              <div className="h-2 bg-blue-700 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-              <div className="h-2 bg-blue-700 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-              <div className="h-2 bg-blue-700 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+            <div className="flex flex-col gap-4">
+              <span className="w-full h-[10px] rounded-md bg-gray-500 animate-pulse"></span>
+              <span className="w-full h-[10px] rounded-md bg-gray-500 animate-pulse"></span>
+              <span className="w-full h-[10px] rounded-md bg-gray-500 animate-pulse"></span>
+              <span className="w-full h-[10px] rounded-md bg-gray-500 animate-pulse"></span>
             </div>
-            <span className="sr-only">Loading...</span>
+
           </div>
           // skeleton end
         )}
@@ -104,7 +94,7 @@ const HomeBanner = () => {
       </div>
 
       {/* suggestion */}
-      <div className="w-[90%] xl:w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+      <div className="w-[90%]  lg:w-[35%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
 
         {/* skeleton */}
       {
@@ -117,7 +107,7 @@ const HomeBanner = () => {
         }
        
         {reverseSuggestionMovies?.length > 0 &&
-          reverseSuggestionMovies.slice(3,6).map((suggestionMovie) => (
+          reverseSuggestionMovies.slice(0,3).map((suggestionMovie) => (
             <div
               key={suggestionMovie.id}
 
@@ -133,6 +123,7 @@ const HomeBanner = () => {
 
               onClick={() => {
                 router(`/articles/article-details/${suggestionMovie.id}`);
+                window.scrollTo(0,0)
               }}
 
               className="w-full h-[100px] flex  gap-2  cursor-pointer rounded-sm overflow-hidden"

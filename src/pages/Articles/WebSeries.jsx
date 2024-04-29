@@ -77,9 +77,10 @@ const WebSeriesPage = () => {
           <img className="w-full" src={images.addImage} alt="" />
         </div>
 
-      {/* route */}
-      <div className="w-[90%] xl:w-full mx-auto ">
-        <span className="text-gray-700 text-[15px]">Home {">"} Web Series</span>
+        <div className="w-[90%] xl:w-full mx-auto ">
+        <span className="text-gray-700 text-[15px] inline-block"><p onClick={()=>{router('/')
+       window.scrollTo(0,0)
+      }} className="inline hover:text-red-600 hover:underline cursor-pointer">Home</p> {">"} Web Series</span>
       </div>
 
       {/* Movies tag */}
@@ -114,7 +115,8 @@ const WebSeriesPage = () => {
           {/* poster thumbnail */}
           <div
             onClick={() =>
-              router(`/articles/article-details/${reversedWebSeries[0]?.id}`)
+              {router(`/articles/article-details/${reversedWebSeries[0]?.id}`)
+              window.scrollTo(0,0)}
             }
             className="poster-img w-full h-[300px] xl:h-[520px] block opacity-100 transition-all duration-300 ease-in overflow-hidden "
           >
@@ -150,7 +152,8 @@ const WebSeriesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articlesdetails/${reversedWebSeries[1]?.id}`)
+                  {router(`/articlesdetails/${reversedWebSeries[1]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -183,7 +186,8 @@ const WebSeriesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articles/article-details/${reversedWebSeries[2]?.id}`)
+                  {router(`/articles/article-details/${reversedWebSeries[2]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -218,7 +222,8 @@ const WebSeriesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articles/article-details/${reversedWebSeries[3]?.id}`)
+                 { router(`/articles/article-details/${reversedWebSeries[3]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -249,7 +254,8 @@ const WebSeriesPage = () => {
               {/* poster thumbnail */}
               <div
                 onClick={() =>
-                  router(`/articles/article-details/${reversedWebSeries[4]?.id}`)
+                  {router(`/articles/article-details/${reversedWebSeries[4]?.id}`)
+                  window.scrollTo(0,0)}
                 }
                 className="poster-img w-full h-full  block opacity-100 transition-all duration-300 ease-in overflow-hidden "
               >
@@ -328,7 +334,9 @@ const WebSeriesPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {genres.map((genre) => (
                 <div
-                  onClick={() => router(`/articles/Genres/${genre?.id}`)}
+                  onClick={() => {router(`/articles/Genres/${genre?.id}`)
+                  window.scrollTo(0,0)
+                }}
                   key={genre?.id}
                   className="bg-[#0386FF] hover:bg-[#599ddd] p-1 flex justify-between text-white cursor-pointer"
                 >

@@ -70,6 +70,11 @@ const Top50ArticlesPage = () => {
      <div className="w-[90%] lg:w-full mx-auto my-5">
           <img className="w-full" src={images.addImage} alt="" />
         </div>
+        <div className="w-[90%] xl:w-full mx-auto my-10 ">
+        <span className="text-gray-700 text-[15px] inline-block"><p onClick={()=>{router('/')
+       window.scrollTo(0,0)
+      }} className="inline hover:text-red-600 hover:underline cursor-pointer">Home</p> {">"} Upcoming</span>
+      </div>
 
       {/* articles and adds */}
 
@@ -118,7 +123,9 @@ const Top50ArticlesPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {genres.map((genre) => (
                 <div
-                onClick={()=>router(`/articles/Genres/${genre?.id}`)}
+                onClick={()=>{router(`/articles/Genres/${genre?.id}`)
+                window.scrollTo(0,0)
+              }}
                   key={genre?.id}
                   className="bg-[#0386FF] hover:bg-[#85bdf1f8] p-1 flex justify-between cursor-pointer text-white"
                 >

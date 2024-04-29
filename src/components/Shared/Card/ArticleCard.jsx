@@ -8,6 +8,8 @@ const ArticleCard = ({ article }) => {
   });
   const router = useNavigate();
 
+  const titleLength=article?.title?.length
+
   const manageDateFormate = (date) => {
     const newDate = new Date(date);
     const dateString = newDate.toDateString();
@@ -25,7 +27,7 @@ const ArticleCard = ({ article }) => {
       style={{
         boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
       }}
-      className="flex flex-col justify-between gap-2   py-3 px-3 cursor-pointer rounded-md "
+      className="flex flex-col justify-between gap-2 h-[250px] lg:h-[350px]  py-3 px-3 cursor-pointer rounded-md "
     >
       {/* image */}
       <div
@@ -33,8 +35,9 @@ const ArticleCard = ({ article }) => {
         onMouseLeave={() => setIshover({ value: null, state: false })}
         onClick={() => {
           router(`/articles/article-details/${article.id}`);
+          window.scrollTo(0,0)
         }}
-        className="w-[100%] h-[125px] md:h-[250px] flex items-center justify-center"
+        className="w-[100%] h-[125px] lg:h-[250px] flex items-center justify-center"
       >
         <img className="w-[100%] h-full object-cover" src={article?.thumbnail} alt="" />
       </div>
@@ -43,13 +46,18 @@ const ArticleCard = ({ article }) => {
       <span
         className={`px-1 hidden lg:block ${
           isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[16px]`}
-      >{`${article?.title.slice(0, 20)}....`}</span>
+        } font-bold text-[12px] md:text-[14px]`}
+      >{titleLength>50 ? `${article?.title?.slice(0,50)}...`: article?.title}</span>
       <span
-        className={`px-1 block lg:hidden ${
+        className={`px-1 hidden sm:block lg:hidden ${
           isHover.value === article.id && "text-red-600"
         } font-bold text-[12px] md:text-[16px]`}
-      >{`${article?.title.slice(0, 15)}....`}</span>
+      >{titleLength>35 ? `${article?.title?.slice(0,35)}...`: article?.title}</span>
+      <span
+        className={`px-1 block sm:hidden ${
+          isHover.value === article.id && "text-red-600"
+        } font-bold text-[12px] md:text-[16px]`}
+      >{titleLength>15 ? `${article?.title?.slice(0,15)}...`: article?.title}</span>
 
       {/* date and genre */}
       <div className="flex flex-col md:flex-row md:items-center gap-y-2 justify-between ">
@@ -61,8 +69,9 @@ const ArticleCard = ({ article }) => {
             <span
               onClick={() => {
                 router(`/articles/genres/${genre?.id}`);
+                window.scrollTo(0,0)
               }}
-              className="text-[8px] md:text-[10px]  bg-slate-800 p-1  text-white font-bold rounded-sm hover:bg-orange-900 animate-pulse"
+              className="text-[6px] md:text-[10px]  bg-slate-800 p-1  text-white font-bold rounded-sm hover:bg-orange-900 animate-pulse"
               key={genre?.id}
             >
               {genre?.title}

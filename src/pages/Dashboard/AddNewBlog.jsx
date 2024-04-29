@@ -62,6 +62,7 @@ const token=localStorage.getItem('token')
 
 
   const selectedIds = selectedGenres.map((gen) => (gen.id));
+  const selectedTagIds=tags.map(tag=>(tag.id))
 
 
   const handlePost = async (e) => {
@@ -76,7 +77,7 @@ const token=localStorage.getItem('token')
       body: content,
       category_id: selectedCategories,
       genres:JSON.stringify(selectedIds),
-      tags: tags.join(","),
+      tags: (selectedTagIds),
       top10:isChecked ? 1:0
     };
 
@@ -91,8 +92,11 @@ const token=localStorage.getItem('token')
     formData.append("body", blogData.body);
     formData.append("genres", blogData.genres);
     formData.append("category_id", blogData.category_id);
-    formData.append("tags", blogData.tags);
+    // formData.append("tags", blogData.tags);
     formData.append("top10", blogData.top10);
+    blogData.tags.map(tag=>{
+      formData.append('tags[]',tag)
+    })
 
     
 
@@ -359,6 +363,7 @@ const token=localStorage.getItem('token')
 
             {/* tagss start */}
             <div className="border border-gray-500 p-3 flex flex-col gap-2">
+
               {/* show tags start*/}
               <div className="my-b">
                 <span className="mb-1 text-base md:text-lg lg:text-xl font-semibold">
@@ -372,13 +377,13 @@ const token=localStorage.getItem('token')
                         className="border border-orange-700  px-4 py-1 flex gap-2 items-center"
                         key={i}
                       >
-                        <span>{tag}</span>
+                        <span>{tag?.name}</span>
                         <span
                           onClick={() => {
                             
                             const filteredTag = tags?.filter((t) => {
                               
-                              return t != tag;
+                              return t.id != tag.id;
                             });
                             setTags(filteredTag);
                           }}
@@ -394,7 +399,7 @@ const token=localStorage.getItem('token')
 
               {/* add tags start */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="tags" className=" text-base">
+                <label htmlFor="tags" className="text-base">
                   Add Tags
                 </label>
                 <div className="flex flex-col md:flex-row gap-2 md:items-center">
@@ -414,8 +419,52 @@ const token=localStorage.getItem('token')
                   <span
                     ref={buttonRef}
                     onClick={() => {
-                      setTags((prev) => [tag, ...prev]);
+                      // setTags((prev) => [tag, ...prev]);
                       setTag("");
+                     
+
+                    fetch(`${base_url}/tags`,{
+                      method:'GET',
+                      headers:{
+                        Accept:'application/json'
+                      }
+                    }).then(res=>res.json()).then(data=>{
+                      if(data?.msg=='success'){
+                        let tagExists;
+                        data?.tags.find(t=>{
+                          
+                          if(t?.name==tag){
+                            tagExists=true
+                            setTags((prev)=>[{
+                              id:t?.id,name:t?.name
+                            },...prev])
+                          }                         
+                        })
+                        if(!tagExists){
+                          const data={
+                            name:tag
+                          }
+                          fetch(`${base_url}/tags/create`, {
+                            method: "POST",
+                            headers: {
+                              Accept: "application/json",
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${token}`,
+                            },
+                            body: JSON.stringify(data),
+                          }).then(res=>res.json()).then(data=>{
+                            if(data?.msg=='success'){
+                              setTags((prev)=>[{
+                                id:data?.tag?.id,name:data?.tag?.name
+                              },...prev])
+                            }
+                          })
+                        }
+                      }
+                    })
+
+                      
+                       
                     }}
                     className="bg-blue-500  w-[50%] lg:w-[25%] text-center px-12 py-2 cursor-pointer text-white rounded-md"
                   >

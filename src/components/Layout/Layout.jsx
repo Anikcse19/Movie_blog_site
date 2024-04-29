@@ -8,7 +8,6 @@ import { TfiWrite } from "react-icons/tfi";
 import { useNavigate } from "react-router-dom";
 import Center from "../Shared/Center/Center";
 import Footer from "../Shared/Footer/Footer";
-import Header from "../Shared/Header/Header";
 import Navbar from "../Shared/Navbar/Navbar";
 
 
@@ -19,7 +18,7 @@ const Layout = ({ children }) => {
   return (
     <div>
      
-        <Header/> 
+        {/* <Header/>  */}
         <div className="w-[90%] lg:w-full  block lg:hidden my-5 cursor-pointer mx-auto">
           <span onClick={()=>{
             setMobileNavOpen(!mobileNavOpen)

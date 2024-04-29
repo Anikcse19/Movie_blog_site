@@ -17,11 +17,9 @@ const Upcoming = () => {
     state: false,
   });
   const [upcomingContents,setUpcommingContents]=useState([])
-  const [firstSlide, setFirstSlide] = useState(0);
-  const [secondSlide, setSecondSlide] = useState(1);
-  const [thirdSlide, setThirdSlide] = useState(2);
+
   const containerRef=useRef()
-  let numbersOfCard;
+  
 
   useEffect(()=>{
     axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=f398789190003083c23f81d2a33cc72c').then(res=>{
@@ -44,24 +42,6 @@ const Upcoming = () => {
     return `${day},${currentDate}th ${month},${year}`;
   };
 
-  const resize=()=>{
-    const container=containerRef.current
-    const width=container.offsetWidth
-    if(width<400){
-      numbersOfCard=2
-    }else{
-      numbersOfCard=3
-    }
-  }
-
-  useEffect(() => {
-    resize()
-
-    window.addEventListener('resize',resize)
-    return () => {
-      window.removeEventListener('resize',resize)
-    };
-  }, []);
   return (
     // <Center>
     <>
@@ -84,35 +64,40 @@ const Upcoming = () => {
         modules={[FreeMode, Pagination]}
         className="mySwiper w-[90%] xl:w-full mx-auto " ref={containerRef}
       >
-        {upcomingContents.map((content) => (
-          <SwiperSlide style={{
-            boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-          }} key={content.id} className="mb-10 mx-2 bg-gray-200">
-            <div            
-            className="flex flex-col justify-center gap-2 cursor-pointer rounded-md  "
-          >
-            <div className="w-[100%] mx-auto ">
-              <img 
-                className="w-[100%] h-[200px]"
-                src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
-                alt=""
-              />
-            </div>
+        {upcomingContents.map((content) => {
+          const titleLength=content?.title.length
 
-            <span
-              className={`px-1 ${
-                isHover.value === content.id &&
-                "text-red-600"
-              }`}
+          return (
+            <SwiperSlide style={{
+              boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+            }} key={content.id} className="mb-10 mx-2 bg-white rounded-sm p-2">
+              <div            
+              className="flex flex-col justify-center gap-2 cursor-pointer rounded-md  "
             >
-              {`${content.title.slice(0,20)}...`}
-            </span>
-            <span className="px-1 pb-1 text-gray-700 text-[12px]">
-              {manageDateFormate(content.release_date)}
-            </span>
-          </div>
-          </SwiperSlide>
-        ))}
+              <div className="w-[100%] mx-auto ">
+                <img 
+                  className="w-[100%] h-[200px] object-cover"
+                  src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
+                  alt=""
+                />
+              </div>
+  
+              <span
+                className={`px-1 ${
+                  isHover.value === content.id &&
+                  "text-red-600"
+                }`}
+              >
+                {titleLength>40 ? `${content?.title?.slice(0,40)}...`: content?.title}
+              </span>
+              <span className="px-1 pb-1 text-gray-700 text-[12px]">
+                {manageDateFormate(content.release_date)}
+              </span>
+            </div>
+            </SwiperSlide>
+          )
+        }
+        )}
       
       </Swiper>
      </div>
@@ -129,43 +114,40 @@ const Upcoming = () => {
         modules={[FreeMode, Pagination]}
         className="mySwiper w-[90%] xl:w-full mx-auto " ref={containerRef}
       >
-        {upcomingContents.map((content) => (
-          <SwiperSlide style={{
-            boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-          }} key={content.id} className="mb-10 mx-2 bg-gray-200">
-            <div            
-            className="flex flex-col justify-center gap-2 cursor-pointer rounded-md  "
-          >
-            <div className="w-[100%] mx-auto ">
-              <img 
-                className="w-[100%] h-[200px]"
-                src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
-                alt=""
-              />
-            </div>
+        {upcomingContents.map((content) => {
+          const titleLength=content?.title.length
 
-            <span
-              className={`px-1 hidden sm:block ${
-                isHover.value === content.id &&
-                "text-red-600"
-              }`}
+          return (
+            <SwiperSlide style={{
+              boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+            }} key={content.id} className="mb-10 mx-2 bg-white rounded-sm p-2">
+              <div            
+              className="flex flex-col justify-center gap-2 cursor-pointer rounded-md  "
             >
-              {`${content.title.slice(0,20)}...`}
-            </span>
-            <span
-              className={`px-1 block sm:hidden ${
-                isHover.value === content.id &&
-                "text-red-600"
-              }`}
-            >
-              {`${content.title.slice(0,10)}...`}
-            </span>
-            <span className="px-1 pb-1 text-gray-700 text-[12px]">
-              {manageDateFormate(content.release_date)}
-            </span>
-          </div>
-          </SwiperSlide>
-        ))}
+              <div className="w-[100%] mx-auto ">
+                <img 
+                  className="w-[100%] h-[200px] object-cover"
+                  src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
+                  alt=""
+                />
+              </div>
+  
+              <span
+                className={`px-1 ${
+                  isHover.value === content.id &&
+                  "text-red-600"
+                }`}
+              >
+                {titleLength>20 ? `${content?.title?.slice(0,15)}...`: content?.title}
+              </span>
+              <span className="px-1 pb-1 text-gray-700 text-[12px]">
+                {manageDateFormate(content.release_date)}
+              </span>
+            </div>
+            </SwiperSlide>
+          )
+        }
+        )}
       
       </Swiper>
      </div>

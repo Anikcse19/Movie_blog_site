@@ -24,10 +24,11 @@ export default function BannerSlider({ slides }) {
               {/* slider image */}
               <div onClick={()=>{
                   router(`/articles/article-details/${slide.id}`)
+                  window.scrollTo(0,0)
               }} className="w-[100%] xl:w-[60%] h-full
                self-baseline cursor-pointer p-1">
                 <img
-                  className="w-[100%] h-[200px] lg:h-full object-cover rounded-sm"
+                  className="w-[100%] h-[140px] md:h-[200px] lg:h-full object-fill sm:object-cover rounded-sm"
                   src={slide?.thumbnail}
                   alt=""
                 />
@@ -54,6 +55,7 @@ export default function BannerSlider({ slides }) {
 
                 <span onClick={()=>{
                   router(`/articles/article-details/${slide?.id}`)
+                  window.scrollTo(0,0)
                 }} className="px-1 pb-2 xl:pb-0 cursor-pointer text-gray-800 font-bold">{`Read More >>`}</span>
               </div>
             </div>
