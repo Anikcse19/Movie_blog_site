@@ -16,6 +16,7 @@ import BlogEditPage from "../pages/Dashboard/EditBlog";
 import GenresPage from "../pages/Dashboard/Genres";
 import TagsPage from "../pages/Dashboard/Tags";
 import Home from "../pages/HomePage";
+import PrivateRoute from "./privateRoutes";
 
 const routes = createBrowserRouter([
   {
@@ -73,28 +74,40 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/dashboard/add-new-blog",
-        element: <AddNewBlogPage />,
+        element: <PrivateRoute>
+          <AddNewBlogPage />
+        </PrivateRoute>,
       },
       {
         path: "/dashboard/all-blogs",
-        element: <AllBlogsPage />,
+        element: <PrivateRoute>
+          <AllBlogsPage />
+        </PrivateRoute>,
       },
       {
         path: "/dashboard/categories",
-        element: <CategoriesPage />,
+        element: <PrivateRoute>
+          <CategoriesPage />
+        </PrivateRoute>,
       },
 
       {
         path: "/dashboard/genres",
-        element: <GenresPage />,
+        element: <PrivateRoute>
+          <GenresPage />
+        </PrivateRoute>,
       },
       {
         path: "/dashboard/tags",
-        element: <TagsPage />,
+        element: <PrivateRoute>
+          <TagsPage />
+        </PrivateRoute>,
       },
       {
         path: "/dashboard/edit-blog/:id",
-        element: <BlogEditPage />,
+        element: <PrivateRoute>
+          <BlogEditPage />
+        </PrivateRoute>,
       },
     ],
   },
