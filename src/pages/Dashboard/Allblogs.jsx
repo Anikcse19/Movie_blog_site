@@ -158,7 +158,7 @@ const AllBlogsPage = () => {
         {/* search and filer option end*/}
 
         {/* show table with available blogs start */}
-        <div className="w-[95%] mx-auto relative overflow-x-auto overflow-y-auto lg:max-w-screen  max-h-screen mt-5 border-2 border-orange-700 ">
+        <div className="w-[95%] lg:w-full mx-auto relative overflow-x-auto overflow-y-auto lg:max-w-screen  max-h-screen mt-5 border-2 border-orange-700 ">
           <table className="w-full">
             <thead className="sticky top-0 text-base bg-gray-400 w-full">
               <tr className="border-b border-orange-700 ">

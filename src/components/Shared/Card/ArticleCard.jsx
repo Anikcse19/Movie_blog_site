@@ -44,19 +44,31 @@ const ArticleCard = ({ article }) => {
 
       {/* title */}
       <span
+      onClick={() => {
+        router(`/articles/article-details/${article.id}`);
+        window.scrollTo(0,0)
+      }}
         className={`px-1 hidden lg:block ${
           isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[14px]`}
+        } font-bold text-[12px] md:text-[14px] hover:text-red-600`}
       >{titleLength>50 ? `${article?.title?.slice(0,50)}...`: article?.title}</span>
       <span
+      onClick={() => {
+        router(`/articles/article-details/${article.id}`);
+        window.scrollTo(0,0)
+      }}
         className={`px-1 hidden sm:block lg:hidden ${
           isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[16px]`}
+        } font-bold text-[12px] md:text-[16px] hover:text-red-600`}
       >{titleLength>35 ? `${article?.title?.slice(0,35)}...`: article?.title}</span>
       <span
+      onClick={() => {
+        router(`/articles/article-details/${article.id}`);
+        window.scrollTo(0,0)
+      }}
         className={`px-1 block sm:hidden ${
           isHover.value === article.id && "text-red-600"
-        } font-bold text-[12px] md:text-[16px]`}
+        } font-bold text-[12px] md:text-[16px] hover:text-red-600`}
       >{titleLength>15 ? `${article?.title?.slice(0,15)}...`: article?.title}</span>
 
       {/* date and genre */}

@@ -81,6 +81,43 @@ const token=localStorage.getItem('token')
       top10:isChecked ? 1:0
     };
 
+    if(!blogData.title){
+      toast.error('The title field is required',{
+        position:"top-right"
+      })
+      return
+    }else if(!blogData.thumbnail){
+      toast.error('The thumbnail field is required',{
+        position:"top-right"
+      })
+      return
+    }else if(!blogData.summery){
+      toast.error('The summery field is required',{
+        position:"top-right"
+      })
+      return
+    }else if(!blogData.body){
+      toast.error('The body field is required',{
+        position:"top-right"
+      })
+      return
+    }else if(!blogData.category_id){
+      toast.error('The category field is required',{
+        position:"top-right"
+      })
+      return
+    }else if(JSON.parse(blogData.genres).length<=0){
+      toast.error('Atleast one genre is must',{
+        position:"top-right"
+      })
+      return
+    }else if(blogData.tags.length<=0){
+      toast.error('Atleast one tag is must',{
+        position:"top-right"
+      })
+      return
+    }
+
     
 
   
@@ -119,6 +156,8 @@ const token=localStorage.getItem('token')
                 position:"top-right"
               })
               router('/dashboard/all-blogs')
+      }else{
+        toast.error(`${data?.message}`)
       }
      
     } catch (error) {
@@ -132,7 +171,7 @@ const token=localStorage.getItem('token')
 
   return (
     <DashboardLayout>
-      <div className="w-[95%] mx-auto lg:w-full">
+      <div className="w-[95%] mx-auto lg:w-full ">
         {/* page title */}
       <div className="mb-6">
         <h1 className="text-2xl border-4 px-2 py-1 border-orange-700 ">
@@ -141,7 +180,7 @@ const token=localStorage.getItem('token')
       </div>
 
       {/* blog main body---> what's on your mind */}
-      <div className="px-5 py-5 rounded-md bg-white ">
+      <div className="px-3 py-5 rounded-md bg-gray-300 ">
         <h1 className="text-base md:text-lg lg:text-2xl font-bold">
           What&apos;s on your mind??
         </h1>
@@ -216,6 +255,13 @@ const token=localStorage.getItem('token')
               </label>
               <JoditEditor
                 className="border border-orange-700  bg-red-600 mt-3"
+                config = {{
+                style:{
+                  background:"#E3E3E3"
+                } ,
+                placeholder:'Start writing', 
+                height: '450px',
+              }}
                 ref={editor}
                 value={content}
                 onChange={(newContent) => {

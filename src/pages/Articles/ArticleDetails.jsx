@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 import { useEffect, useState } from "react";
@@ -10,54 +9,48 @@ import base_url from "../../Utils/Url";
 import Layout from "../../components/Layout/Layout";
 import SuggestionCard from "../../components/Shared/Card/SuggestionCard";
 
-
 const suggestionMovies = [
   {
     id: 1,
-    img:images.suggestionImage,
+    img: images.suggestionImage,
     title: "10 Best Jennifer Lawrence Movies of All Time, Ranked by Viewers",
   },
   {
     id: 2,
-    img:images.suggestionImage,
+    img: images.suggestionImage,
     title: "10 Best Jennifer Lawrence Movies of All Time, Ranked by Viewers",
   },
   {
     id: 3,
-    img:images.suggestionImage,
+    img: images.suggestionImage,
     title: "10 Best Jennifer Lawrence Movies of All Time, Ranked by Viewers",
   },
   {
     id: 4,
-    img:images.suggestionImage,
+    img: images.suggestionImage,
     title: "10 Best Jennifer Lawrence Movies of All Time, Ranked by Viewers",
   },
 ];
 
-
 const ArticleDetailsPage = () => {
-
-
-  const [article,setArticle]=useState({})
-  const [genres,setGenres]=useState([])
+  const [article, setArticle] = useState({});
+  const [genres, setGenres] = useState([]);
   const router = useNavigate();
-  const { id } =useParams()
-  const navigate=useNavigate()
-  
-  useEffect(()=>{
-  
-    axios.get(`${base_url}/articles/${id}`).then(res=>setArticle(res.data.article))
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-     // get all genres
-     axios.get(`${base_url}/genres`).then(res=>{
-      if(res?.data){
-        setGenres(res?.data?.genres)
+  useEffect(() => {
+    axios
+      .get(`${base_url}/articles/${id}`)
+      .then((res) => setArticle(res.data.article));
+
+    // get all genres
+    axios.get(`${base_url}/genres`).then((res) => {
+      if (res?.data) {
+        setGenres(res?.data?.genres);
       }
-    })
-  },[])
-
-
-  
+    });
+  }, []);
 
   const manageDateFormate = (date) => {
     const newDate = new Date(date);
@@ -73,10 +66,10 @@ const ArticleDetailsPage = () => {
   return (
     <Layout>
       {/* advertise */}
-      
-     <div className="w-[90%] lg:w-full mx-auto my-5">
-          <img className="w-full" src={images.addImage} alt="" />
-        </div>
+
+      <div className="w-[90%] lg:w-full mx-auto my-5">
+        <img className="w-full" src={images.addImage} alt="" />
+      </div>
 
       {/* main body */}
       <div className="w-[90%] lg:w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 my-5">
@@ -84,29 +77,50 @@ const ArticleDetailsPage = () => {
           {/* pathname */}
           <div className="my-2">
             <span className="text-gray-700 text-[10px] md:text-[15px]">
-              <p onClick={()=>navigate('/')} className="inline cursor-pointer hover:text-red-600 hover:underline">Home</p>  {">"} <p onClick={()=>{navigate('/articles/movies')
-             window.scrollTo(0,0)
-            }} className="inline cursor-pointer hover:text-red-600 hover:underline">{article?.category_id==1?"Movies":"Web Series"}</p> {">"} {article?.title}
+              <p
+                onClick={() => navigate("/")}
+                className="inline cursor-pointer hover:text-red-600 hover:underline"
+              >
+                Home
+              </p>{" "}
+              {">"}{" "}
+              <p
+                onClick={() => {
+                  navigate("/articles/movies");
+                  window.scrollTo(0, 0);
+                }}
+                className="inline cursor-pointer hover:text-red-600 hover:underline"
+              >
+                {article?.category_id == 1 ? "Movies" : "Web Series"}
+              </p>{" "}
+              {">"} {article?.title}
             </span>
           </div>
 
           {/* Genre tag */}
           <div className="bg-red-600 px-3 py-2 text-white inline-block mt-2">
-            <span>{article?.category_id==1?"Movies":"Web Series"}</span>
+            <span>{article?.category_id == 1 ? "Movies" : "Web Series"}</span>
           </div>
 
           {/* Content Title */}
           <div className="my-2">
             <h1 className="text-base xl:text-3xl font-bold ">
-             {article?.title}
+              {article?.title}
             </h1>
             {/* blog write and date */}
             <div className="w-[100%] lg:w-[50%] flex justify-between items-center">
               <span className="text-gray-700 text-[15px] flex items-center gap-3">
                 {" "}
-                <VscAccount /> <p onClick={()=>{navigate(`/articles/author/${article?.user?.id}`)
-               window.scrollTo(0,0)
-              }} className="hover:text-red-500 cursor-pointer">{article?.user?.name}</p>
+                <VscAccount />{" "}
+                <p
+                  onClick={() => {
+                    navigate(`/articles/author/${article?.user?.id}`);
+                    window.scrollTo(0, 0);
+                  }}
+                  className="hover:text-red-500 cursor-pointer"
+                >
+                  {article?.user?.name}
+                </p>
               </span>
               <span className="text-gray-700 text-[15px]">
                 {manageDateFormate(article?.created_at)}
@@ -115,10 +129,8 @@ const ArticleDetailsPage = () => {
           </div>
 
           {/* content details */}
-          <div dangerouslySetInnerHTML={{ __html: article?.body }}/>
-            
-         
-         
+          <div dangerouslySetInnerHTML={{ __html: article?.body }} />
+
           {/* advertise */}
           <div className="my-2">
             <img src="/image/homePageAds.png" alt="" />
@@ -128,10 +140,17 @@ const ArticleDetailsPage = () => {
           <div>
             <span>Tags:</span>
             <div className="flex items-center flex-wrap gap-3">
-              {article?.tags?.map((tag)=>(
-                <span onClick={()=>{navigate(`/articles/tag/${tag?.id}`)
-                window.scrollTo(0,0)
-              }} key={tag?.id} className="bg-blue-400 hover:bg-blue-300 cursor-pointer px-3 py-1 text-white">{tag?.name}</span>
+              {article?.tags?.map((tag) => (
+                <span
+                  onClick={() => {
+                    navigate(`/articles/tag/${tag?.id}`);
+                    window.scrollTo(0, 0);
+                  }}
+                  key={tag?.id}
+                  className="bg-blue-400 hover:bg-blue-300 cursor-pointer px-3 py-1 text-white"
+                >
+                  {tag?.name}
+                </span>
               ))}
             </div>
           </div>
@@ -215,9 +234,10 @@ const ArticleDetailsPage = () => {
               <div className="grid grid-cols-2 gap-3">
                 {genres.map((genre) => (
                   <div
-                  onClick={()=>{router(`/articles/genres/${genre?.id}`)
-                  window.scrollTo(0,0)
-                }}
+                    onClick={() => {
+                      router(`/articles/genres/${genre?.id}`);
+                      window.scrollTo(0, 0);
+                    }}
                     key={genre?.id}
                     className="bg-[#0386FF] hover:bg-[#4183c0] p-1 flex justify-between cursor-pointer text-white"
                   >

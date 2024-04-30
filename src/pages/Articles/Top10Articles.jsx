@@ -73,7 +73,7 @@ const Top50ArticlesPage = () => {
         <div className="w-[90%] xl:w-full mx-auto my-10 ">
         <span className="text-gray-700 text-[15px] inline-block"><p onClick={()=>{router('/')
        window.scrollTo(0,0)
-      }} className="inline hover:text-red-600 hover:underline cursor-pointer">Home</p> {">"} Upcoming</span>
+      }} className="inline hover:text-red-600 hover:underline cursor-pointer">Home</p> {">"} Top-10-Articles</span>
       </div>
 
       {/* articles and adds */}

@@ -23,7 +23,7 @@ const Articles = () => {
         </div>
       </div>
       {/* content */}
-      <div className="w-[90%] xl:w-full mx-auto my-2 grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 items-center justify-between gap-3 gap-y-7">
+      <div className="w-[90%] xl:w-full mx-auto my-2 grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 items-center justify-between gap-3 gap-y-3">
         {!latestArticles.length > 0 && (
           <div className="animate-pulse h-[1000px] w-[1080px] bg-gray-300" />
         )}

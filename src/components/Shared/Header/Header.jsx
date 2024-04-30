@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className="bg-white py-2">
       <Center>
-        <div className="flex justify-between items-center mx-3 md:mx-0">
+        <div className="flex justify-between items-center  mx-3 md:mx-0">
           {/* logo */}
           <div onClick={() => router("/")} className="">
             <img className="w-[100px] md:w-full" src={images.logo} alt="" />
