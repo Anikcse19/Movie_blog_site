@@ -1,6 +1,5 @@
 
 import { useContext } from "react";
-import { CiMenuFries } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { BlogContext } from "../../ContextApi/BlogContext";
 import DashboardSidebar from "../Sidebar/DashboardSidebar";
@@ -29,7 +28,7 @@ const DashboardLayout = ({ children }) => {
       <div className="flex-grow flex flex-col w-[80%]">
 
         {/* children upper part start */}
-        <div className="bg-gray-300  flex justify-between items-center py-6 px-5 w-full">
+        {/* <div className="bg-gray-300  flex justify-between items-center py-6 px-5 w-full">
           <div className="  font-bold flex items-center  gap-3">
             <div className="w-8 h-8 bg-white rounded-full overflow-hidden">
               <img src="https://i.ibb.co/rpQczPG/male.jpg" alt="" />
@@ -45,7 +44,7 @@ const DashboardLayout = ({ children }) => {
           >
             <CiMenuFries />
           </div>
-        </div>
+        </div> */}
         {/* children upper part end */}
         <div className="lg:px-3 py-5 lg:py-5 min-h-screen flex-grow bg-gray-300  w-full">
           {children}

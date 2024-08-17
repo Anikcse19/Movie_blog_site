@@ -47,7 +47,7 @@ const LoginPage = () => {
         setIsLoading(false);
       } else {
         setError(true);
-        setIsLoading(false)
+        setIsLoading(false);
       }
     });
   };
@@ -64,30 +64,45 @@ const LoginPage = () => {
         </div>
         {/* form  start*/}
         <div className="w-full flex flex-col gap-y-5">
-          
-          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md ">
-          <input
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Write your mail"
-                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
-                type="email"
-              />
-          {emailMissingError && (
-            <span className="text-red-500 block mt-3">Email required</span>
-          )}
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md relative">
+            <label
+              htmlFor="email"
+              className="absolute -top-2 left-5 z-40 bg-white px-2 font-bold"
+            >
+              Email
+            </label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              // placeholder="Write your mail"
+              className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
+              type="email"
+            />
+            {emailMissingError && (
+              <span className="text-red-500 block mt-3">Email required</span>
+            )}
           </div>
-          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md  ">
-          <input
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Type Password"
-                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
-                type="password"
-              />
-          {passwordMissingError && (
-            <span className="text-red-500 block mt-3">Password required</span>
-          )}
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md relative ">
+            <label
+              htmlFor="password"
+              className="absolute -top-2 left-5 z-40 bg-white px-2 font-bold"
+            >
+              Password
+            </label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              // placeholder="Type Password"
+              className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
+              type="password"
+            />
+            {passwordMissingError && (
+              <span className="text-red-500 block mt-3">Password required</span>
+            )}
           </div>
-          {error && <span className="w-[100%] md:w-[60%] mx-auto text-red-500">Invalid Credentials</span>}
+          {error && (
+            <span className="w-[100%] md:w-[60%] mx-auto text-red-500">
+              Invalid Credentials
+            </span>
+          )}
         </div>
         {/* form  end*/}
 
@@ -105,25 +120,25 @@ const LoginPage = () => {
         {/* login Button end*/}
 
         {isLoading && (
-  <div className="w-full flex justify-center items-center">
-    <CirclesWithBar
-      height="50"
-      width="50"
-      color="red"
-      outerCircleColor="red"
-      innerCircleColor="red"
-      barColor="red"
-      ariaLabel="circles-with-bar-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-    />
-  </div>
-)}
+          <div className="w-full flex justify-center items-center">
+            <CirclesWithBar
+              height="50"
+              width="50"
+              color="red"
+              outerCircleColor="red"
+              innerCircleColor="red"
+              barColor="red"
+              ariaLabel="circles-with-bar-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        )}
 
         <div>
           <span>
-            New User? please {" "}
+            New User? please{" "}
             <Link className="text-blue-900 underline" to="/auth/registration">
               Registration here
             </Link>
@@ -135,5 +150,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-

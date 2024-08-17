@@ -104,8 +104,9 @@ const BlogEditPage = () => {
     
     const blogData = {
       title: blogTitle,
-      thumbnail: file?file:thumbnail?thumbnail:"",
-      summery:blogSummery,
+      // thumbnail: file?file:thumbnail?thumbnail:"",
+      thumbnail:"",
+      // summery:blogSummery,
       body: content,
       category_id: selectedCategories,
       genres: JSON.stringify(selectedIds),
@@ -117,7 +118,7 @@ const BlogEditPage = () => {
     const formData = new FormData();
     formData.append("title", blogData.title);
     formData.append("thumbnail", blogData?.thumbnail );
-    formData.append("summery", blogData.summery);
+    // formData.append("summery", blogData.summery);
     formData.append("body", blogData.body);
     formData.append("genres", blogData.genres);
     formData.append("category_id", blogData.category_id);
@@ -208,6 +209,9 @@ const BlogEditPage = () => {
               >
                 Add Thumbnail
               </label>
+              <div className="w-[300px] h-[200px]">
+                <img className="w-full h-full" src={thumbnail} alt="" />
+              </div>
             
               <div className="w-full l">
                 <input
@@ -220,7 +224,7 @@ const BlogEditPage = () => {
             {/* blog thumbnail end*/}
 
              {/* blog summery start */}
-             <div className="flex flex-col gap-3 ">
+             {/* <div className="flex flex-col gap-3 ">
               <label
                 htmlFor="summery"
                 className=" text-base md:text-lg lg:text-xl font-semibold"
@@ -236,7 +240,7 @@ const BlogEditPage = () => {
                   className="w-[100%] md:w-[60%] h-full outline-none border-2 border-gray-500  rounded-lg px-5 py-5 resize-none"
                 />
               </div>
-            </div>
+            </div> */}
             {/* blog summery end */}
 
             {/* blog details start */}

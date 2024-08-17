@@ -59,7 +59,7 @@ const CategoriesPage = () => {
     <DashboardLayout>
       {/* page title */}
       <div className="mb-6 w-[90%] md:w-full mx-auto">
-        <h1 className="text-2xl border-4 px-2 py-1 border-orange-700">
+        <h1 className="text-2xl border-b-4 border-t-4 border-slate-900 px-2 py-1 ">
           Categories
         </h1>
       </div>
@@ -77,14 +77,14 @@ const CategoriesPage = () => {
       </div> */}
       {/* search category end */}
 
-      <div className="grid grid-cols-1 md:grid-cols-4  gap-3 relative w-[90%] md:w-full mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:mt-24 gap-3 relative w-[90%] md:w-full mx-auto">
         <div className="md:col-span-2 ">
-          <div className=" border border-orange-700">
+          <div className=" border border-slate-900">
             <table className="w-full">
               <thead>
-                <tr className="bg-blue-500">
-                  <th className="px-3 py-2 border-r border-black">Name</th>
-                  <th className="px-3 py-2 border-r border-black">Slug</th>
+                <tr className="bg-slate-900 text-white">
+                  <th className="px-3 py-2 border-r border-slate-700">Name</th>
+                  <th className="px-3 py-2 border-r border-slate-700">Slug</th>
                   <th className="px-3 py-2">Action</th>
                 </tr>
               </thead>
@@ -93,7 +93,7 @@ const CategoriesPage = () => {
                   categories.map((category) => (
                     <tr
                       key={category.id}
-                      className="bg-blue-300 border-b border-black"
+                      className="bg-slate-300 border-b border-black"
                     >
                       <td className="px-3 py-2 text-center border-r border-black">
                         {category.title}
@@ -103,24 +103,26 @@ const CategoriesPage = () => {
                       </td>
                       <td className="px-3 py-2 text-center border-r border-black flex items-center justify-center gap-2">
                         <span
+                       
                           onClick={() =>
                             setIsDeleteModalOpenForCategory({
                               value: category.id,
                               status: true,
                             })
                           }
-                          className="bg-red-500 px-2 py-1 text-white font-bold rounded shadow-md cursor-pointer"
+                          className="text-red-700 hover:text-red-500 px-2 py-1  font-bold rounded  cursor-pointer"
                         >
                           Delete
                         </span>
                         <span
+                        
                           onClick={() =>
                             setUpdateCategory({
                               value: category.id,
                               status: true,
                             })
                           }
-                          className="bg-green-500 px-2 py-1 text-white font-bold rounded shadow-md cursor-pointer"
+                          className="text-green-800 hover:text-green-500 px-2 py-1  font-bold rounded  cursor-pointer"
                         >
                           Edit
                         </span>
@@ -146,7 +148,7 @@ const CategoriesPage = () => {
                   }
                 }}
                 value={title}
-                className="px-5 py-2 outline-none"
+                className="px-5 py-2 outline-none bg-slate-300 border border-slate-900 focus:border-2 focus:border-green-700 rounded-md "
                 placeholder="type category title"
                 type="text"
                 name="genre_title"
@@ -157,7 +159,7 @@ const CategoriesPage = () => {
             <span
               ref={buttonRef}
               onClick={handleCategoryCreate}
-              className="px-5 py-2 text-center rounded shadow-lg border border-white bg-blue-500 text-white font-bold cursor-pointer"
+              className="px-5 py-2 text-center rounded shadow-lg   bg-slate-900 hover:border-2 hover:border-slate-100 text-white font-bold cursor-pointer"
             >
               Create Category
             </span>

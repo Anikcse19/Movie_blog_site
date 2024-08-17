@@ -63,7 +63,7 @@ const GenresPage = () => {
     <div className="w-[95%] mx-auto lg:w-full">
   {/* page title */}
   <div className="mb-6">
-        <h1 className="text-2xl border-4 px-2 py-1 border-orange-700 ">
+        <h1 className="text-2xl  px-2 py-1 border-b-4 border-t-4 border-slate-900 ">
           Genres
         </h1>
         <div onClick={()=>{
@@ -79,15 +79,15 @@ const GenresPage = () => {
               toast.success('Cleared All Genre')
             }
           })
-        }} className="inline-block bg-red-600 text-white cursor-pointer px-5 py-2 rounded-md shadow-lg mt-5">
-          <div className="flex items-center gap-2 ">
-          <IoTrashBin/>
-        <span>Clear All</span>
-          </div>
+        }} className="inline-block text-white cursor-pointer px-5 py-2 rounded-md  mt-5">
+           <div className="group bg-slate-900 flex items-center gap-2 w-[50%] lg:w-full  px-3 py-1 rounded-md text-white">
+                <IoTrashBin className="group-hover:text-red-600 text-red-200"/>
+                <span className="group-hover:text-red-600 text-red-200">Clear All</span>
+              </div>
         </div>
       </div>
       {/* search category start */}
-      <div className="flex flex-col md:flex-row md:items-center text-center gap-2 mb-10 md:mb-3">
+      {/* <div className="flex flex-col md:flex-row md:items-center text-center gap-2 mb-10 md:mb-3">
         <input
           placeholder="search"
           className="outline-none border border-orange-700  px-4 py-1"
@@ -96,17 +96,17 @@ const GenresPage = () => {
         <span className="px-5 py-1 bg-blue-600 border border-white text-white font-bold cursor-pointer">
           Search Genre
         </span>
-      </div>
+      </div> */}
       {/* search category end */}
 
       <div className="grid grid-cols-1 md:grid-cols-4  gap-3">
         <div className="md:col-span-2 ">
-          <div className="border border-orange-600 ">
+          <div className="border border-slate-900 ">
             <table className="w-full">
               <thead>
-                <tr className="bg-blue-500">
-                  <th className="px-3 py-2 border-r border-black">Name</th>
-                  <th className="px-3 py-2 border-r border-black">Slug</th>
+                <tr className="bg-slate-900 text-white">
+                  <th className="px-3 py-2 border-r border-slate-700">Name</th>
+                  <th className="px-3 py-2 border-r border-slate-700">Slug</th>
                   <th className="px-3 py-2">Action</th>
                 </tr>
               </thead>
@@ -114,7 +114,7 @@ const GenresPage = () => {
                 {genres.map((genre) => (
                   <tr
                     key={genre.id}
-                    className="bg-blue-300 border-b border-black"
+                    className="bg-slate-300 border-b border-black"
                   >
                     <td className="px-3 py-2 text-center border-r border-black">
                       {genre.title}
@@ -124,13 +124,16 @@ const GenresPage = () => {
                     </td>
                     <td className="px-3 py-2 text-center border-r border-black">
                       <span
+                      style={{
+                        textShadow: "1px 1px 2px red"
+                      }}
                         onClick={() =>
                           setIsDeleteModalOpenForGenre({
                             value: genre.id,
                             status: true,
                           })
                         }
-                        className="bg-red-500 px-2 py-1 text-white font-bold rounded shadow-md cursor-pointer"
+                        className="text-red-500  font-bold text rounded  cursor-pointer"
                       >
                         Delete
                       </span>
@@ -156,7 +159,7 @@ const GenresPage = () => {
                   }
                 }}
                 value={title}
-                className="px-5 py-2 outline-none"
+                className="px-5 py-2 outline-none bg-slate-300 border border-slate-900 focus:border-2 focus:border-green-700 rounded-md "
                 placeholder="type genre title"
                 type="text"
                 name="genre_title"
@@ -166,7 +169,7 @@ const GenresPage = () => {
             <span
               ref={buttonRef}
               onClick={handleGenreCreate}
-              className="px-5 py-2 text-center rounded shadow-lg border border-white bg-blue-500 text-white font-bold cursor-pointer"
+              className="px-5 py-2 text-center rounded shadow-lg   bg-slate-900 hover:border-2 hover:border-slate-100 text-white font-bold cursor-pointer"
             >
               Create Genre
             </span>

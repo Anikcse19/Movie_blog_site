@@ -46,11 +46,12 @@ export default function BannerSlider({ slides }) {
 
                 {/* slider details */}
                 <span className="text-gray-700 hidden lg:block text-[12px] py-6 pr-5">
-                  {slide?.summery ? `${slide?.summery.slice(0,200)}...` : slide?.tags}
+                  <span dangerouslySetInnerHTML={{__html:slide?.body && `${slide?.body.slice(0,200)}...` }}/>
                 </span>
 
                 <span className="text-gray-700 block lg:hidden text-[12px] py-6 pr-1">
-                  {slide?.summery ? `${slide?.summery.slice(0,100)}...` : slide?.tags}
+                <span dangerouslySetInnerHTML={{__html:slide?.body && `${slide?.body.slice(0,100)}...`}}/>
+                
                 </span>
 
                 <span onClick={()=>{

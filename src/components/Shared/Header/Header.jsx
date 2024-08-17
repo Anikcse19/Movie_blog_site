@@ -16,8 +16,22 @@ const Header = () => {
       <Center>
         <div className="flex justify-between items-center  mx-3 md:mx-0">
           {/* logo */}
-          <div onClick={() => router("/")} className="">
-            <img className="w-[100px] md:w-full" src={images.logo} alt="" />
+          <div
+            // style={{
+            //   boxShadow:
+            //     "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+            // }}
+            onClick={() => router("/")}
+            className=" rounded px-2 py-2 cursor-pointer"
+          >
+            <span className="tracking-widest text-xl font-bold text-yellow-700">
+              IMDB
+            </span>
+            <span className="tracking-widest text-xl font-bold text-red-600">
+              {" "}
+              MOVIES
+            </span>
+            {/* <h1>IMBD MOVIES</h1> */}
           </div>
           {/* search bar */}
           {/* <div className="w-[40%] md:flex items-center border border-black rounded-md overflow-hidden hidden">
@@ -37,7 +51,7 @@ const Header = () => {
                 onClick={() => {
                   localStorage.removeItem("token");
                 }}
-                className="bg-red-600 px-3 py-1 md:px-5 md:py-2 text-white font-bold rounded-md cursor-pointer"
+                className="bg-red-600 hover:bg-red-400 px-3 py-1 md:px-5 md:py-2 text-white font-bold rounded-md cursor-pointer"
               >
                 Sign Out
               </span>
@@ -48,7 +62,7 @@ const Header = () => {
                 onClick={() => {
                   router("/auth/login");
                 }}
-                className="bg-red-600 px-5 py-2 text-white font-bold rounded-md cursor-pointer"
+                className="bg-red-600 hover:bg-red-400 px-5 py-2 text-white font-bold rounded-md cursor-pointer"
               >
                 Sign in
               </span>

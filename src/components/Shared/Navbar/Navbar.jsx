@@ -1,4 +1,3 @@
-
 import { FaCalendarAlt, FaHome } from "react-icons/fa";
 import { GiPin } from "react-icons/gi";
 import { ImFilm } from "react-icons/im";
@@ -9,34 +8,33 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Center from "../Center/Center";
 
-
-
-const baseUrl='https://blogtest.emdb.online/api'
+const baseUrl = "https://blogtest.emdb.online/api";
 const Navbar = () => {
   const [movieButtonClicked, setMovieButtonClicked] = useState(1);
-  const [isHoverOnMovies,setIsHoverOnMovies]=useState(false)
-  const [isHoverOnWebSeries,setIsHoverOnWebSeries]=useState(false)
-  const [genres,setGenres]=useState([])
+  const [isHoverOnMovies, setIsHoverOnMovies] = useState(false);
+  const [isHoverOnWebSeries, setIsHoverOnWebSeries] = useState(false);
+  const [genres, setGenres] = useState([]);
 
   const navigate = useNavigate();
-  const router=useLocation()
+  const router = useLocation();
   const { pathname } = router;
 
- useEffect(()=>{
-  axios.get(`${baseUrl}/genres`).then(res=>setGenres(res?.data?.genres))
- },[])
-
+  useEffect(() => {
+    axios.get(`${baseUrl}/genres`).then((res) => setGenres(res?.data?.genres));
+  }, []);
 
   return (
     <Center>
-      <div className="hidden lg:flex justify-evenly bg-white my-2 p-1 ">
+      <div className="hidden lg:flex justify-evenly  my-2 py-1 ">
         <div
           onClick={() => navigate("/")}
           className={`flex items-center justify-center gap-2 cursor-pointer ${
-            pathname === "/" ? "text-red-500" : "hover:text-red-300"
+            pathname === "/"
+              ? "text-red-500 bg-white px-3 rounded-md shadow-lg"
+              : "hover:text-red-300"
           }  px-5 py-2 rounded-lg `}
         >
-          <FaHome className="w-4 h-4"/>
+          <FaHome className="w-4 h-4" />
           <span className="text-[14px] xl:text-[16px] font-semibold">Home</span>
         </div>
         <div
@@ -50,19 +48,22 @@ const Navbar = () => {
             // setTimeout(()=>{setMovieButtonClicked(1)},5000)
             navigate("/articles/movies");
           }}
-          onMouseEnter={()=>setIsHoverOnMovies(true)}
-          onMouseLeave={()=>setIsHoverOnMovies(false)}
+          onMouseEnter={() => setIsHoverOnMovies(true)}
+          onMouseLeave={() => setIsHoverOnMovies(false)}
           className={`flex items-center justify-center gap-4 cursor-pointer ${
-            pathname.includes("/movies") ? "text-red-500" : "hover:text-red-300"
+            pathname.includes("/movies")
+              ? "text-red-500 bg-white px-3 rounded-md shadow-lg"
+              : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative`}
         >
-          <ImFilm className="w-4 h-4"/>
-          <span className="text-[14px] xl:text-[18px] font-semibold">Movies</span>
-
+          <ImFilm className="w-4 h-4" />
+          <span className="text-[14px] xl:text-[18px] font-semibold">
+            Movies
+          </span>
 
           {/* Movies Button Dropbutton */}
-          
-            {/* <div
+
+          {/* <div
             style={{
               boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
             }}
@@ -81,27 +82,26 @@ const Navbar = () => {
              ))
             }
         </div> */}
-        
-          
-
         </div>
 
         <div
           onClick={() => {
             navigate("/articles/web-series");
           }}
-          onMouseEnter={()=>setIsHoverOnWebSeries(true)}
-          onMouseLeave={()=>setIsHoverOnWebSeries(false)}
+          onMouseEnter={() => setIsHoverOnWebSeries(true)}
+          onMouseLeave={() => setIsHoverOnWebSeries(false)}
           className={`flex items-center justify-center gap-4 cursor-pointer ${
             pathname.includes("/web-series")
-              ? "text-red-500"
+              ? "text-red-500 bg-white px-3 rounded-md shadow-lg"
               : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative `}
         >
-          <MdOndemandVideo className="w-4 h-4"/>
-          <span className="text-[14px] xl:text-[18px] font-semibold">Web Series</span>
+          <MdOndemandVideo className="w-4 h-4" />
+          <span className="text-[14px] xl:text-[18px] font-semibold">
+            Web Series
+          </span>
 
-          {/* web series Button Dropbutton */}  
+          {/* web series Button Dropbutton */}
           {/* <div
           style={{
             boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"
@@ -116,9 +116,6 @@ const Navbar = () => {
              ))
             }
         </div> */}
-
-
-
         </div>
 
         <div
@@ -127,26 +124,30 @@ const Navbar = () => {
           }}
           className={`flex items-center justify-center gap-4 cursor-pointer ${
             pathname.includes("/upcoming-articles")
-              ? "text-red-500"
+              ? "text-red-500 bg-white px-3 rounded-md shadow-lg"
               : "hover:text-red-300"
           }  px-5 py-2 rounded-lg relative`}
         >
-          <FaCalendarAlt className="w-4 h-4"/>
-          <span className="text-[14px] xl:text-[18px] font-semibold">Upcoming</span>
-
-            
+          <FaCalendarAlt className="w-4 h-4" />
+          <span className="text-[14px] xl:text-[18px] font-semibold">
+            Upcoming
+          </span>
         </div>
 
-        <div onClick={() => {
+        <div
+          onClick={() => {
             navigate("/articles/top-10-articles");
           }}
           className={`flex items-center justify-center gap-4 cursor-pointer ${
             pathname.includes("/top-10-articles")
-              ? "text-red-500"
+              ? "text-red-500 bg-white px-3 rounded-md shadow-lg"
               : "hover:text-red-300"
-          }  px-5 py-2 rounded-lg relative`}>
-          <GiPin className="w-4 h-4"/>
-          <span className="text-[14px] xl:text-[18px] font-semibold">Top 50 Articles</span>
+          }  px-5 py-2 rounded-lg relative`}
+        >
+          <GiPin className="w-4 h-4" />
+          <span className="text-[14px] xl:text-[18px] font-semibold">
+            Top 50 Articles
+          </span>
         </div>
       </div>
     </Center>

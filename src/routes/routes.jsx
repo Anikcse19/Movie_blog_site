@@ -16,6 +16,7 @@ import BlogEditPage from "../pages/Dashboard/EditBlog";
 import GenresPage from "../pages/Dashboard/Genres";
 import TagsPage from "../pages/Dashboard/Tags";
 import Home from "../pages/HomePage";
+import MovieLinks from "../pages/MovieLink";
 import PrivateRoute from "./privateRoutes";
 
 const routes = createBrowserRouter([
@@ -109,6 +110,10 @@ const routes = createBrowserRouter([
           <BlogEditPage />
         </PrivateRoute>,
       },
+      {
+        path:'/dashboard/movie-links',
+        element:<MovieLinks/>
+      }
     ],
   },
 ]);

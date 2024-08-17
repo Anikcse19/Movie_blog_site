@@ -52,6 +52,8 @@ const ArticleDetailsPage = () => {
     });
   }, []);
 
+
+
   const manageDateFormate = (date) => {
     const newDate = new Date(date);
     const dateString = newDate.toDateString();
@@ -129,6 +131,11 @@ const ArticleDetailsPage = () => {
           </div>
 
           {/* content details */}
+
+
+          <div className="my-4">
+            <img src={article?.thumbnail} alt="" />
+          </div>
           <div dangerouslySetInnerHTML={{ __html: article?.body }} />
 
           {/* advertise */}

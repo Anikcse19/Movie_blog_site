@@ -60,7 +60,7 @@ const TagsPage = () => {
       <div className="w-[95%] mx-auto lg:w-full">
         {/* page title */}
         <div className="mb-6">
-          <h1 className="text-2xl border-4 px-2 py-1 border-orange-700 ">
+          <h1 className="text-2xl border-b-4 border-t-4 border-slate-900 px-2 py-1 ">
             Genres
           </h1>
           {/* <div onClick={()=>{
@@ -87,10 +87,10 @@ const TagsPage = () => {
         <div className="flex flex-col md:flex-row md:items-center text-center gap-2 mb-10 md:mb-3">
           <input
             placeholder="search"
-            className="outline-none border border-orange-700  px-4 py-1"
+            className="px-5 py-2 outline-none bg-slate-300 border border-slate-900 focus:border-2 focus:border-green-700  "
             type="text"
           />
-          <span className="px-5 py-1 bg-blue-600 border border-white text-white font-bold cursor-pointer">
+          <span className="px-5 py-2 bg-slate-900 border  text-white font-bold cursor-pointer">
             Search Tag
           </span>
         </div>
@@ -98,11 +98,11 @@ const TagsPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-4  gap-3">
           <div className="md:col-span-2 ">
-            <div className="border border-orange-600 ">
+            <div className="border border-slate-900 ">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-blue-500">
-                    <th className="px-3 py-2 border-r border-black">Name</th>
+                  <tr className="bg-slate-900 text-white">
+                    <th className="px-3 py-2 border-r border-slate-700">Name</th>
 
                     <th className="px-3 py-2">Action</th>
                   </tr>
@@ -111,7 +111,7 @@ const TagsPage = () => {
                   {tags.map((tag) => (
                     <tr
                       key={tag?.id}
-                      className="bg-blue-300 border-b border-black"
+                      className="bg-slate-300 border-b border-black"
                     >
                       <td className="px-3 py-2 text-center border-r border-black">
                         {tag?.name}
@@ -130,7 +130,7 @@ const TagsPage = () => {
                               status: true,
                             })}
                           }
-                          className="bg-red-500 px-2 py-1 text-white font-bold rounded shadow-md cursor-pointer"
+                          className="text-red-700 hover:text-red-500 px-2 py-1  font-bold rounded cursor-pointer"
                         >
                           Delete
                         </span>
@@ -156,7 +156,7 @@ const TagsPage = () => {
                     }
                   }}
                   value={title}
-                  className="px-5 py-2 outline-none"
+                  className="px-5 py-2 outline-none bg-slate-300 border border-slate-900 focus:border-2 focus:border-green-700 rounded-md "
                   placeholder="type genre title"
                   type="text"
                   name="genre_title"
@@ -166,7 +166,7 @@ const TagsPage = () => {
               <span
                 ref={buttonRef}
                 onClick={handleGenreCreate}
-                className="px-5 py-2 text-center rounded shadow-lg border border-white bg-blue-500 text-white font-bold cursor-pointer"
+                className="px-5 py-2 text-center rounded shadow-lg   bg-slate-900 hover:border-2 hover:border-slate-100 text-white font-bold cursor-pointer"
               >
                 Create Tag
               </span>

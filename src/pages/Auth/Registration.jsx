@@ -58,40 +58,62 @@ const RegistrationPage = () => {
         </div>
         {/* form  start*/}
         <div className="w-full flex flex-col gap-y-5">
-          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md  ">
-          <input
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Write your name"
-                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
-                type="text"
-              />
-          {nameMissingError && (
-            <span className="text-red-500 block mt-3">Name required</span>
-          )}
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md relative ">
+            <label
+              htmlFor="name"
+              className="absolute -top-2 left-5 z-40 bg-white px-2 font-bold"
+            >
+              Name
+            </label>
+            <input
+              onChange={(e) => setName(e.target.value)}
+              // placeholder="Write your name"
+              className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-700"
+              type="text"
+            />
+            {nameMissingError && (
+              <span className="text-red-500 block mt-3">Name required</span>
+            )}
           </div>
-          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md ">
-          <input
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Write your mail"
-                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
-                type="email"
-              />
-          {emailMissingError && (
-            <span className="text-red-500 block mt-3">Email required</span>
-          )}
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md relative">
+            <label
+              htmlFor="email"
+              className="absolute -top-2 left-5 z-40 bg-white px-2 font-bold"
+            >
+              Email
+            </label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              // placeholder="Write your mail"
+              className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-700"
+              type="email"
+            />
+            {emailMissingError && (
+              <span className="text-red-500 block mt-3">Email required</span>
+            )}
           </div>
-          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md  ">
-          <input
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Type Password"
-                className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-600"
-                type="password"
-              />
-          {passwordMissingError && (
-            <span className="text-red-500 block mt-3">Password required</span>
-          )}
+          <div className="w-[100%] md:w-[60%] mx-auto px-3 py-1 rounded-md  relative">
+            <label
+              htmlFor="password"
+              className="absolute -top-2 left-5 z-40 bg-white px-2 font-bold"
+            >
+              Password
+            </label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              // placeholder="Type Password"
+              className="w-full px-3 py-2 rounded   outline-none mb-0 border-2 border-gray-800 focus:border-blue-700"
+              type="password"
+            />
+            {passwordMissingError && (
+              <span className="text-red-500 block mt-3">Password required</span>
+            )}
           </div>
-          {error && <span className="w-[100%] md:w-[60%] mx-auto text-red-500">Already registered.</span>}
+          {error && (
+            <span className="w-[100%] md:w-[60%] mx-auto text-red-500">
+              Already registered.
+            </span>
+          )}
         </div>
         {/* form  end*/}
 
